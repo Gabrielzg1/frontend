@@ -1,13 +1,8 @@
-import logo from "./logo.svg";
-import "./App.css";
-import Buttons from "./Containers/buttons";
+import React from "react";
+import AppRoutes from "./AppRoutes";
 
 function App() {
-  return (
-    <div className="App">
-      <Buttons className="buttons" />
-    </div>
-  );
+  return <AppRoutes />;
 }
 
 export default App;
