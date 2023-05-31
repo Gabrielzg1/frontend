@@ -4,14 +4,16 @@ import { useNavigate } from "react-router-dom";
 import Loader from "../../Containers/Loader";
 import "./styles.css";
 import Buttons from "../../Containers/Buttons/index";
+import Navbar from "../../Containers/Navbar";
 
 const LoginPage = () => {
 	const navigate = useNavigate();
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
-	const [error, setError] = useState(false);
+	const [failError, setFailError] = useState(false);
 	const [loading, isLoading] = useState(false);
 	const [option, setOption] = useState("users");
+	const [error, setError] = useState(false);
 
 	const handleSelectedOption = (loginType) => {
 		setOption(loginType);
@@ -19,13 +21,20 @@ const LoginPage = () => {
 	};
 
 	const hadleLogin = async () => {
-		setError(false);
-		isLoading(true);
-		const response = await login(email, password, option);
-		console.log(response.data);
-		if (response.data.msg == true) navigate("/");
-		else setError(true);
-		isLoading(false);
+		try {
+			setFailError(false);
+			isLoading(true);
+			const response = await login(email, password, option);
+			console.log(response.data);
+			if (response.data.msg === true) navigate("/");
+			else setFailError(true);
+			isLoading(false);
+		} catch (err) {
+			console.log(err);
+		} finally {
+			setError(true);
+			isLoading(false);
+		}
 	};
 
 	if (loading) {
@@ -33,6 +42,7 @@ const LoginPage = () => {
 	}
 	return (
 		<div>
+			<Navbar />
 			<div class="login-box">
 				<p>Login</p>
 				<form>
@@ -56,7 +66,10 @@ const LoginPage = () => {
 						/>
 						<label>Password</label>
 					</div>
-					{error == true && <p className="error">Email ou senha inválido</p>}
+					{failError === true && (
+						<p className="error">Email ou senha inválido</p>
+					)}
+					{error === true && <p className="error">Servidor fora do ar</p>}
 					<a onClick={hadleLogin}>
 						<span></span>
 						<span></span>
