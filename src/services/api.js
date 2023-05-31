@@ -19,3 +19,6 @@ export const getQuizes = async () => {
 export const getTrainings = async () => {
   return api.get("/training");
 };
+export const createUser = async (username, email, password) => {
+  return api.post("/users", { username, email, password });
+};

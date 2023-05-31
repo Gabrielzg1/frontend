@@ -6,10 +6,11 @@ import "./styles.css";
 import Buttons from "../../Containers/Buttons/index";
 import Navbar from "../../Containers/Navbar";
 
-const LoginPage = () => {
+const RegisterPage = () => {
 	const navigate = useNavigate();
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+    const [username, setUsername] = useState("")
 	const [failError, setFailError] = useState(false);
 	const [loading, isLoading] = useState(false);
 	const [option, setOption] = useState("users");
@@ -20,7 +21,7 @@ const LoginPage = () => {
 		console.log(option);
 	};
 
-	const hadleLogin = async () => {
+	const hadleRegister = async () => {
 		try {
 			setFailError(false);
 			isLoading(true);
@@ -71,11 +72,21 @@ const LoginPage = () => {
 						/>
 						<label>Password</label>
 					</div>
+                    <div class="user-box">
+						<input
+							type="text"
+							name="username"
+							id="username"
+							value={username}
+							onChange={(e) => setUsername(e.target.value)}
+						/>
+						<label>Username</label>
+					</div>
 					{failError === true && (
 						<p className="error">Email ou senha inválido</p>
 					)}
 					{error === true && <p className="error">Servidor fora do ar</p>}
-					<a onClick={hadleLogin}>
+					<a onClick={hadleRegister}>
 						<span></span>
 						<span></span>
 						<span></span>
@@ -90,9 +101,9 @@ const LoginPage = () => {
 				/>
 
 				<p>
-					Don't have an account?{" "}
-					<a href="/register" class="a2">
-						Sign up!
+					already have an account?{" "}
+					<a href="/login" class="a2">
+						Login!
 					</a>
 				</p>
 			</div>
@@ -100,4 +111,4 @@ const LoginPage = () => {
 	);
 };
 
-export default LoginPage;
+export default RegisterPage;

@@ -9,6 +9,7 @@ import {
 import LoginPage from "./pages/LoginPage";
 import MainPage from "./pages/MainPage";
 import UserPage from "./pages/UserPage"
+import RegisterPage from "./pages/RegisterPage";
 
 const AppRoutes = () => {
     return (
@@ -17,6 +18,7 @@ const AppRoutes = () => {
             <Route exact path = "/" element = {<MainPage/>}/>
             <Route exact path = "/login" element = {<LoginPage/>}/>
             <Route exact path = "/user" element = {<UserPage/>}/>  
+            <Route exact path = "/register" element = {<RegisterPage/>}/>
         </Routes>
     </Router>)
 }
