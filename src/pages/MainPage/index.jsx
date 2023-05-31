@@ -24,8 +24,6 @@ const MainPage = () => {
 		<div id="main">
 			<Navbar />
 			<h1>Main Page</h1>
-			<a href="/user">User Page</a>
-			<DeleteButton/>
 		</div>
 	);
 };
