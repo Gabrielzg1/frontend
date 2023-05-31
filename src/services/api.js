@@ -10,3 +10,12 @@ export const login = async (email, password, type) => {
 export const getUsers = async () => {
   return api.get("/users");
 };
+export const getUser = async (id) => {
+  return api.get(`/users/${id}`);
+};
+export const getQuizes = async () => {
+  return api.get("/quiz");
+};
+export const getTrainings = async () => {
+  return api.get("/training");
+};

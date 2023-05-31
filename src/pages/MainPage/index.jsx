@@ -1,14 +1,17 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getUsers } from "../../services/api";
 import Navbar from "../../Containers/Navbar";
 import "./styles.css";
+import DeleteButton from "../../Containers/DeleteButton";
 const MainPage = () => {
-	const loadData = async (query = "") => {
+	const [dataError, setDataError] = useState(false)
+	const loadData = async () => {
 		try {
 			const response = await getUsers();
 			console.log(response.data);
 		} catch (err) {
+			setDataError(true)
 			console.error(err);
 		}
 	};
@@ -21,6 +24,8 @@ const MainPage = () => {
 		<div id="main">
 			<Navbar />
 			<h1>Main Page</h1>
+			<a href="/user">User Page</a>
+			<DeleteButton/>
 		</div>
 	);
 };
