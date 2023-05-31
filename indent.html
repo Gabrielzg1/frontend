@@ -1,0 +1,15 @@
+<div class="radio-inputs">
+    <label class="radio">
+        <input type="checkbox" checked={selectedOption==='admins' } value="admins" onChange={handleCheckboxChange} />
+        <span class="name">HTML</span>
+    </label>
+    <label class="radio">
+        <input checked={selectedOption==='users' } type="checkbox" value="users" onChange={handleCheckboxChange} />
+        <span class="name">React</span>
+    </label>
+
+    <label class="radio">
+        <input checked={selectedOption==='company' } type="checkbox" value="company" onChange={handleCheckboxChange} />
+        <span class="name">Vue</span>
+    </label>
+</div>

@@ -1,6 +1,9 @@
 import React, { useState, useContext } from "react";
 import { login } from "../../services/api";
 import { useNavigate } from "react-router-dom";
+import Loader from "../../Containers/Loader";
+import "./styles.css"
+import Buttons from "../../Containers/Buttons/index";
 
 
 const LoginPage = () => {
@@ -9,9 +12,17 @@ const LoginPage = () => {
     const [password, setPassword] = useState('');
     const [error, setError] = useState(false)
     const [loading, isLoading] = useState(false)
+    const [option, setOption]= useState('')
+
+    const handleSelectedOption = (loginType) => {
+        setOption(loginType)
+        console.log(option);
+      };
+
     const hadleLogin = async () => {
+        setError(false)
         isLoading(true)
-        const response = await login(email, password)
+        const response = await login(email, password, option)
         console.log(response.data);
         if(response.data.msg == true)
             navigate("/")
@@ -21,38 +32,39 @@ const LoginPage = () => {
     }
 
     if(loading){
-        return <h1>Loading....</h1>
+        return <Loader/>
     }
     return (
-        <div id="login">
-            <h1 className="title">Login</h1>
-            <div className="form">
-                <div className="field">
-                    <label htmlFor="email">Email:</label>
-                    <input
-                        type="email"
-                        name="email"
-                        id="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)} />
-                </div>
-                <div className="field">
-                    <label htmlFor="password">Password:</label>
-                    <input
-                        type="password"
-                        name="password"
-                        id="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)} />
-                </div>
+    <div>
+      <div class="login-box">
+      <p>Login</p>
+      <form>
+          <div class="user-box">
+              <input type="email" name="email" id="email" value={email} onChange={(e)=> setEmail(e.target.value)} />
+              <label>Email</label>
+          </div>
+          <div class="user-box">
+              <input type="password" name="password" id="password" value={password} onChange={(e)=>
+              setPassword(e.target.value)} />
+              <label>Password</label>
+          </div>
+          {error == true && <p className="error">Email ou senha inválido</p>}
+          <a onClick={hadleLogin}>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              Submit
+          </a>
+      </form>
+      <br />
+      <Buttons handleOptionChange={handleSelectedOption} className="buttons"/>
 
-                <div className="actions">
-                    <button onClick={hadleLogin}>Entrar</button>
-                </div>
-            </div>
-            {error && <h1>Email ou senha incorreto</h1>}
-        
-        </div>
-    )
-}
+      <p>Don't have an account? <a href="" class="a2">Sign up!</a></p>
+  </div>   
+  
+  </div>
+    )}
+
+
 export default LoginPage
