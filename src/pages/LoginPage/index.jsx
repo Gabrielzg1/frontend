@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { login } from "../../services/api";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import Loader from "../../Containers/Loader";
 import "./styles.css";
 import Buttons from "../../Containers/Buttons/index";
@@ -26,7 +26,12 @@ const LoginPage = () => {
 			isLoading(true);
 			const response = await login(email, password, option);
 			console.log(response.data);
-			if (response.data.msg === true) navigate("/");
+			if (response.data.msg === true) {
+				navigate("/user", {
+					state: {
+						id: response.data.id
+					},});
+			}
 			else setFailError(true);
 			isLoading(false);
 		} catch (err) {
