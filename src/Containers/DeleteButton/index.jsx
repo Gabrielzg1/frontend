@@ -4,8 +4,8 @@ import "./styles.css";
 function DeleteButton() {
   return (
     <div className="main">
-        <button class="noselect">
-            <span class="text">Delete</span>
+        <button className="noselect">
+            <span className="text">Delete</span>
         </button>
     </div>
 );

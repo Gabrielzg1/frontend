@@ -1,15 +1,16 @@
 import React, { useState, useContext } from "react";
-import { login } from "../../services/api";
+import { register } from "../../services/api";
 import { useNavigate, useLocation } from "react-router-dom";
 import Loader from "../../Containers/Loader";
 import "./styles.css";
 import Buttons from "../../Containers/Buttons/index";
 import Navbar from "../../Containers/Navbar";
 
-const LoginPage = () => {
+const RegisterPage = () => {
 	const navigate = useNavigate();
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+    const [username, setUsername] = useState("")
 	const [failError, setFailError] = useState(false);
 	const [loading, isLoading] = useState(false);
 	const [option, setOption] = useState("users");
@@ -20,26 +21,22 @@ const LoginPage = () => {
 		console.log(option);
 	};
 
-	const hadleLogin = async () => {
+	const hadleRegister = async () => {
 		try {
 			setFailError(false);
-			setError(false)
 			isLoading(true);
-			const response = await login(email, password, option);
+			const response = await register(option,username, email, password);
+			localStorage.setItem('id', response.data._id);
 			console.log(response.data);
-			if (response.data.msg === true) {
-				localStorage.setItem('id', response.data.id);
-				navigate("/user", {
-					state: {
-						id: response.data.id
-					},});
+			if (response.status === 201) {
+				navigate("/login");
 			}
 			else setFailError(true);
 			isLoading(false);
 		} catch (err) {
 			console.log(err);
-			setError(true);
 		} finally {
+			setError(true);
 			isLoading(false);
 		}
 	};
@@ -73,11 +70,21 @@ const LoginPage = () => {
 						/>
 						<label>Password</label>
 					</div>
+                    <div className="user-box">
+						<input
+							type="text"
+							name="username"
+							id="username"
+							value={username}
+							onChange={(e) => setUsername(e.target.value)}
+						/>
+						<label>Username</label>
+					</div>
 					{failError === true && (
 						<p className="error">Email ou senha inválido</p>
 					)}
 					{error === true && <p className="error">Servidor fora do ar</p>}
-					<a onClick={hadleLogin}>
+					<a onClick={hadleRegister}>
 						<span></span>
 						<span></span>
 						<span></span>
@@ -92,9 +99,9 @@ const LoginPage = () => {
 				/>
 
 				<p>
-					Don't have an account?{" "}
-					<a href="/register" class="a2">
-						Sign up!
+					already have an account?{" "}
+					<a href="/login" className="a2">
+						Login!
 					</a>
 				</p>
 			</div>
@@ -102,4 +109,4 @@ const LoginPage = () => {
 	);
 };
 
-export default LoginPage;
+export default RegisterPage;

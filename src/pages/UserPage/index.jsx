@@ -5,13 +5,15 @@ import "./styles.css";
 import Navbar from "../../Containers/Navbar";
 
 const UserPage = () => {
+	const navigate= useNavigate()
 	const [applied, setApplied] = useState([])
 	const [finished, setFinished] = useState([])
     const { state } = useLocation();
 	const { id } = state;
 	const loadData = async (query = "") => {
 		try {
-            console.log(id)
+           if(localStorage.getItem("id") !== id || id === null)
+		   		navigate("/login")
 			const response = await getUser(id);
 			setApplied(response.data.applied)
 			setFinished(response.data.finished)

@@ -19,3 +19,6 @@ export const getQuizes = async () => {
 export const getTrainings = async () => {
   return api.get("/training");
 };
+export const register = async (option, username, email, password) => {
+  return api.post(`${option}`, { username, email, password });
+};
