@@ -7,6 +7,7 @@ import Navbar from "../../Containers/Navbar";
 const UserPage = () => {
 	const navigate= useNavigate()
 	const [applied, setApplied] = useState([])
+	const [name, setname]=useState("")
 	const [finished, setFinished] = useState([])
     const { state } = useLocation();
 	const { id } = state;
@@ -16,6 +17,7 @@ const UserPage = () => {
 		   		navigate("/login")
 			const response = await getUser(id);
 			setApplied(response.data.applied)
+			setname(response.data.username)
 			setFinished(response.data.finished)
 			console.log(response.data);
 		} catch (err) {
@@ -29,24 +31,37 @@ const UserPage = () => {
 	return (
 		<div id="main">
             <Navbar/>
-            <h1>User Page</h1>
-			<ul> <span>Finished Tasks</span>
-			{
-              finished.map((item) => (
-				<li>{item}</li>
+            <h1>Bem vindo {name}</h1>
 
-			  ))}
-			
-			</ul>
-			<ul> <span>Applied Tasks</span>
-			{
-              applied.map((item) => (
-				<li>{item}</li>
 
-			  ))}
+				<ul> <h2>Finished Tasks</h2>
+				<div id="endtask">
+				{
+				finished.map((item) => (
+					<li>{item}</li>
+
+
+				))}
+
+					<div > <ul> <li id="boxtask">aa</li></ul></div>
+					<div > <ul> <li id="boxtask">aa</li></ul></div>
+					<div > <ul> <li id="boxtask">aa</li></ul></div>
+					
+
+				</div>
+				</ul>
 			
-			</ul>
-            
+		
+			<div id="taskdone">
+				<ul> <h2>Applied Tasks</h2>
+				{
+				applied.map((item) => (
+					<li>{item}</li>
+
+				))}
+				
+				</ul>
+			</div>
 		</div>
 	);
 };

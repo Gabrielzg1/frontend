@@ -1,3 +1,50 @@
-.main{
+body{
+
+    background-size: 1000px 1000px;
+    background-image: linear-gradient(grey, lightgrey, white);
+    font-family: 'Times New Roman', Times, serif;
+
+}
+
+
+#main{
+    
+}
+
+#endtask{
+
+
+    display: flex;
+    border-radius: 5px;
+    font-size: 20px;
+    flex-wrap: wrap;
+    padding: 20px 10px;
+    height: auto;
+    max-width: 1300px;
+    border: 1.5px solid black;
     z-index: -1;
+
+}
+
+#taskdone{
+
+
+}
+
+#jobs{}
+
+#boxtask{
+
+    margin-left: 10px;
+    border: 1px solid black;
+    border-radius: 4px;
+    padding: 5px 10px;
+
+}
+
+h1{
+
+    margin-left: 30px;
+    text-align: left;
+    margin-bottom: 50px;
 }
