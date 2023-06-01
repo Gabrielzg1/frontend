@@ -9,34 +9,34 @@ const Buttons = ({ handleOptionChange }) => {
 	};
 
 	return (
-		<div class="radio-inputs">
-			<label class="radio">
+		<div className="radio-inputs">
+			<label className="radio">
 				<input
 					type="checkbox"
 					checked={selectedOption === "admins"}
 					value="admins"
 					onChange={handleCheckboxChange}
 				/>
-				<span class="name">Admin</span>
+				<span className="name">Admin</span>
 			</label>
-			<label class="radio">
+			<label className="radio">
 				<input
 					checked={selectedOption === "users"}
 					type="checkbox"
 					value="users"
 					onChange={handleCheckboxChange}
 				/>
-				<span class="name">User</span>
+				<span className="name">User</span>
 			</label>
 
-			<label class="radio">
+			<label className="radio">
 				<input
 					checked={selectedOption === "company"}
 					type="checkbox"
 					value="company"
 					onChange={handleCheckboxChange}
 				/>
-				<span class="name">Company</span>
+				<span className="name">Company</span>
 			</label>
 		</div>
 	);

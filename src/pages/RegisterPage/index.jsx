@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { login } from "../../services/api";
+import { register } from "../../services/api";
 import { useNavigate, useLocation } from "react-router-dom";
 import Loader from "../../Containers/Loader";
 import "./styles.css";
@@ -25,13 +25,11 @@ const RegisterPage = () => {
 		try {
 			setFailError(false);
 			isLoading(true);
-			const response = await login(email, password, option);
+			const response = await register(option,username, email, password);
+			localStorage.setItem('id', response.data._id);
 			console.log(response.data);
-			if (response.data.msg === true) {
-				navigate("/user", {
-					state: {
-						id: response.data.id
-					},});
+			if (response.status === 201) {
+				navigate("/login");
 			}
 			else setFailError(true);
 			isLoading(false);
@@ -49,10 +47,10 @@ const RegisterPage = () => {
 	return (
 		<div>
 			<Navbar />
-			<div class="login-box">
+			<div className="login-box">
 				<p>Login</p>
 				<form>
-					<div class="user-box">
+					<div className="user-box">
 						<input
 							type="text"
 							name="email"
@@ -62,7 +60,7 @@ const RegisterPage = () => {
 						/>
 						<label>Email</label>
 					</div>
-					<div class="user-box">
+					<div className="user-box">
 						<input
 							type="password"
 							name="password"
@@ -72,7 +70,7 @@ const RegisterPage = () => {
 						/>
 						<label>Password</label>
 					</div>
-                    <div class="user-box">
+                    <div className="user-box">
 						<input
 							type="text"
 							name="username"
@@ -102,7 +100,7 @@ const RegisterPage = () => {
 
 				<p>
 					already have an account?{" "}
-					<a href="/login" class="a2">
+					<a href="/login" className="a2">
 						Login!
 					</a>
 				</p>

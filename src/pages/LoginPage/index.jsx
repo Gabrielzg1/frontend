@@ -23,10 +23,12 @@ const LoginPage = () => {
 	const hadleLogin = async () => {
 		try {
 			setFailError(false);
+			setError(false)
 			isLoading(true);
 			const response = await login(email, password, option);
 			console.log(response.data);
 			if (response.data.msg === true) {
+				localStorage.setItem('id', response.data.id);
 				navigate("/user", {
 					state: {
 						id: response.data.id
@@ -36,8 +38,8 @@ const LoginPage = () => {
 			isLoading(false);
 		} catch (err) {
 			console.log(err);
-		} finally {
 			setError(true);
+		} finally {
 			isLoading(false);
 		}
 	};
@@ -48,10 +50,10 @@ const LoginPage = () => {
 	return (
 		<div>
 			<Navbar />
-			<div class="login-box">
+			<div className="login-box">
 				<p>Login</p>
 				<form>
-					<div class="user-box">
+					<div className="user-box">
 						<input
 							type="text"
 							name="email"
@@ -61,7 +63,7 @@ const LoginPage = () => {
 						/>
 						<label>Email</label>
 					</div>
-					<div class="user-box">
+					<div className="user-box">
 						<input
 							type="password"
 							name="password"
