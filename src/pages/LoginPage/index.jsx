@@ -29,10 +29,7 @@ const LoginPage = () => {
 			console.log(response.data);
 			if (response.data.msg === true) {
 				localStorage.setItem('id', response.data.id);
-				navigate("/user", {
-					state: {
-						id: response.data.id
-					},});
+				navigate(`/${option}`);
 			}
 			else setFailError(true);
 			isLoading(false);
@@ -93,7 +90,7 @@ const LoginPage = () => {
 
 				<p>
 					Don't have an account?{" "}
-					<a href="/register" class="a2">
+					<a href="/register" className="a2">
 						Sign up!
 					</a>
 				</p>
