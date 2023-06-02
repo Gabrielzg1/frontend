@@ -1,15 +1,12 @@
 body{
-
-    background-size: 1000px 1000px;
-    background-image: linear-gradient(grey, lightgrey, white);
     font-family: 'Times New Roman', Times, serif;
+    padding: 0;
+    margin: 0
 
 }
 
 
-#main{
-    
-}
+
 
 #endtask{
 
@@ -18,20 +15,16 @@ body{
     border-radius: 5px;
     font-size: 20px;
     flex-wrap: wrap;
-    padding: 20px 10px;
+    padding: 20px 10px 20px 10px;
     height: auto;
-    max-width: 1300px;
+    width: 97%;
     border: 1.5px solid black;
     z-index: -1;
 
 }
 
-#taskdone{
 
 
-}
-
-#jobs{}
 
 #boxtask{
 
