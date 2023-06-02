@@ -9,12 +9,12 @@ const UserPage = () => {
 	const [applied, setApplied] = useState(["Math", "fisica"])
 	const [name, setname]=useState("Nome do usuário")
 	const [finished, setFinished] = useState(["Math", "fisica"])
-    const { state } = useLocation();
-	const { id } = state;
+
 
 	const loadData = async (query = "") => {
 		try {
-           	if(localStorage.getItem("id") !== id || id === null)
+			const id = localStorage.getItem("id")
+           	if(id === null)
 		   		navigate("/login")	
 			const response = await getUser(id);
 			//setApplied(response.data.applied)
@@ -23,6 +23,7 @@ const UserPage = () => {
 			console.log(response.data);
 		} catch (err) {
 			console.error(err);
+			navigate("/login")
 		}
 	};
 	useEffect(() => {
