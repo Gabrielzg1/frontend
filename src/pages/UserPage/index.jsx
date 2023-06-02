@@ -6,9 +6,9 @@ import Navbar from "../../Containers/Navbar";
 
 const UserPage = () => {
 	const navigate= useNavigate()
-	const [applied, setApplied] = useState([])
+	const [applied, setApplied] = useState(["Math", "fisica"])
 	const [name, setname]=useState("")
-	const [finished, setFinished] = useState([])
+	const [finished, setFinished] = useState(["Math", "fisica"])
     const { state } = useLocation();
 	const { id } = state;
 	const loadData = async (query = "") => {
@@ -16,9 +16,9 @@ const UserPage = () => {
            if(localStorage.getItem("id") !== id || id === null)
 		   		navigate("/login")
 			const response = await getUser(id);
-			setApplied(response.data.applied)
+			//setApplied(response.data.applied)
 			setname(response.data.username)
-			setFinished(response.data.finished)
+			//setFinished(response.data.finished)
 			console.log(response.data);
 		} catch (err) {
 			console.error(err);
@@ -38,15 +38,9 @@ const UserPage = () => {
 				<div id="endtask">
 				{
 				finished.map((item) => (
-					<li>{item}</li>
-
+					<li  id="boxtask"><a href="/">{item}</a></li>
 
 				))}
-
-					<div > <ul> <li id="boxtask">aa</li></ul></div>
-					<div > <ul> <li id="boxtask">aa</li></ul></div>
-					<div > <ul> <li id="boxtask">aa</li></ul></div>
-					
 
 				</div>
 				</ul>
