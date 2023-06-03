@@ -28,6 +28,15 @@ const Buttons = ({ handleOptionChange }) => {
 				/>
 				<span className="name">User</span>
 			</label>
+			<label className="radio">
+				<input
+					checked={selectedOption === "mentors"}
+					type="checkbox"
+					value="mentors"
+					onChange={handleCheckboxChange}
+				/>
+				<span className="name">Mentor</span>
+			</label>
 
 			<label className="radio">
 				<input

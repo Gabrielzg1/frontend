@@ -1,3 +1,50 @@
-.main{
+body{
+    font-family: 'Times New Roman', Times, serif;
+    padding: 0;
+    margin: 0
+
+}
+
+
+
+
+#endtask{
+
+
+    display: flex;
+    border-radius: 5px;
+    font-size: 20px;
+    flex-wrap: wrap;
+    padding: 20px 10px 20px 10px;
+    height: auto;
+    width: 97%;
+    border: 1.5px solid black;
     z-index: -1;
+
+}
+
+
+
+
+#boxtask{
+
+    margin-left: 10px;
+    border: 1px solid black;
+    border-radius: 4px;
+    padding: 5px 10px;
+    list-style-type: none;
+
+
+}
+#boxtask a{
+
+   text-decoration: none;
+
+}
+
+h1{
+
+    margin-left: 30px;
+    text-align: left;
+    margin-bottom: 50px;
 }

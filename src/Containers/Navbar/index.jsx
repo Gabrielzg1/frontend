@@ -40,9 +40,17 @@ function Navbar() {
 					
 					
 					{ (logged === true) ? 
+					<>
+					
+					<li>
+						<a href="/user">UserPage</a>
+					</li> 
 					<li>
 						<a onClick={logout}>Logout</a>
 					</li> 
+					
+
+					</>
 					: 
 					(
 						<>
