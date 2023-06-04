@@ -6,9 +6,9 @@ import Navbar from "../../Containers/Navbar";
 
 const UserPage = () => {
 	const navigate= useNavigate()
-	const [applied, setApplied] = useState(["Math", "fisica"])
+	const [applied, setApplied] = useState(["Math", "fisica","fisica","fisica","fisica","fisica","fisica","fisica","fisica","fisica","fisica","fisica","fisica"])
 	const [name, setname]=useState("Nome do usuário")
-	const [finished, setFinished] = useState(["Math", "fisica"])
+	const [finished, setFinished] = useState(["Quimica", "fisica"])
 
 
 	const loadData = async (query = "") => {
@@ -36,30 +36,44 @@ const UserPage = () => {
             <h1>Bem vindo, {name}!</h1>
 
 
+			<div  id="boxtask1">
 				<ul> <h2>Applied Tasks</h2>
 				<div id="endtask">
-				{
-				applied.map((item) => (
-					<li  id="boxtask"><a href="/">{item}</a></li>
+					{
+					applied.map((item) => (
+						<li id="boxtask">
+							<button
+							id="botao"
+							onClick={()=> {navigate("/")}}>
+							{item}
+							</button>
+							
+						</li>
 
-				))}
-
-				</div>
-				</ul>
-			
-		
-			
-				<ul> <h2>Finished Tasks</h2>
-				<div id="endtask">
-				{
-				finished.map((item) => (
-					<li  id="boxtask"><a href="/">{item}</a></li>
-
-				))}
-
+					))}
 				</div>
 				</ul>
 			</div>
+
+
+			<div  id="boxtask1">
+				<ul> <h2>Finished Tasks</h2>
+				<div id="endtask">
+					{
+					finished.map((item) => (
+						<li id="boxtask">
+							<button
+							id="botao"
+							onClick={()=> {navigate("/")}}>
+							{item}
+							</button>
+						</li>
+					))}
+				</div>
+				</ul>
+			</div>
+	
+		</div>
 		
 	);
 };
