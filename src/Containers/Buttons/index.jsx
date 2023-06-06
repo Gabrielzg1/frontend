@@ -30,9 +30,9 @@ const Buttons = ({ handleOptionChange }) => {
 			</label>
 			<label className="radio">
 				<input
-					checked={selectedOption === "mentor"}
+					checked={selectedOption === "mentors"}
 					type="checkbox"
-					value="mentor"
+					value="mentors"
 					onChange={handleCheckboxChange}
 				/>
 				<span className="name">Mentor</span>
