@@ -48,6 +48,11 @@ body{
 
     margin-left: 40px;
     color:white;
+    list-style-type: none;
+    border-style: 1px white;
+      border-radius: 0.5rem;
+
+
 }
 
 #botao{
@@ -73,13 +78,13 @@ body{
 
 
 
-h1{
+.title{
 
     margin-left: 50px;
     margin-top: 50px;
     font-size: 30px;
     font-weight: 400px;
     text-align: left;
-    color:whitesmoke;
+    color:rgb(0, 0, 0);
     
 }
