@@ -3,15 +3,15 @@ import { useNavigate } from "react-router-dom";
 import { getUsers } from "../../services/api";
 import Navbar from "../../Containers/Navbar";
 import "./styles.css";
-import DeleteButton from "../../Containers/DeleteButton";
+
 const MainPage = () => {
-	const [dataError, setDataError] = useState(false)
+	const [dataError, setDataError] = useState(false);
 	const loadData = async () => {
 		try {
 			const response = await getUsers();
 			console.log(response.data);
 		} catch (err) {
-			setDataError(true)
+			setDataError(true);
 			console.error(err);
 		}
 	};
@@ -23,7 +23,7 @@ const MainPage = () => {
 	return (
 		<div id="main">
 			<Navbar />
-			<h1>Main Page</h1>
+			<h1 className="title">Main Page</h1>
 		</div>
 	);
 };

@@ -4,13 +4,12 @@ import { useNavigate, useLocation } from "react-router-dom";
 import "./styles.css";
 
 function Navbar() {
-	const [logged, isLogged] = useState(false)
-	const navigate = useNavigate()
+	const [logged, isLogged] = useState(false);
+	const navigate = useNavigate();
 	const loadData = async () => {
 		try {
-           const id = localStorage.getItem("id");
-		   if(id !== null)
-			isLogged(true)
+			const id = localStorage.getItem("id");
+			if (id !== null) isLogged(true);
 		} catch (err) {
 			console.error(err);
 		}
@@ -18,12 +17,11 @@ function Navbar() {
 	useEffect(() => {
 		(async () => await loadData())();
 	}, []);
-	
-	const logout = async () =>{
-		localStorage.clear();
-		navigate("/login")
-	}
 
+	const logout = async () => {
+		localStorage.clear();
+		navigate("/login");
+	};
 
 	return (
 		<div className="body">
@@ -37,32 +35,26 @@ function Navbar() {
 					<li>
 						<a href="/">Home</a>
 					</li>
-					
-					
-					{ (logged === true) ? 
-					<>
-					
-					<li>
-						<a href="/user">UserPage</a>
-					</li> 
-					<li>
-						<a onClick={logout}>Logout</a>
-					</li> 
-					
 
-					</>
-					: 
-					(
+					{logged === true ? (
 						<>
-					<li>
-						<a href="/register">Register</a>
-					</li>
-					<li>
-					<a href="/login">Login</a>
-					</li>
-					</>
-					)
-					}
+							<li>
+								<a href="/users">UserPage</a>
+							</li>
+							<li>
+								<a onClick={logout}>Logout</a>
+							</li>
+						</>
+					) : (
+						<>
+							<li>
+								<a href="/register">Register</a>
+							</li>
+							<li>
+								<a href="/login">Login</a>
+							</li>
+						</>
+					)}
 				</ul>
 			</div>
 		</div>

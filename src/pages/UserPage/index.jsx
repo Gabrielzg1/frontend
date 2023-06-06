@@ -57,7 +57,7 @@ const UserPage = () => {
 								<button
 									id="botao"
 									onClick={() => {
-										navigate("/");
+										navigate("/training");
 									}}
 								>
 									{item}
