@@ -14,6 +14,7 @@ import TrainingPage from "./pages/TrainingPage";
 import AdminPage from "./pages/AdminPage";
 import CompanyPage from "./pages/CompanyPage";
 import MentorPage from "./pages/MentorPage";
+import CreateTrainingPage from "./pages/CreateTrainingPage";
 
 const AppRoutes = () => {
     return (
@@ -27,6 +28,8 @@ const AppRoutes = () => {
             <Route exact path = "/admins" element = {<AdminPage/>}/>
             <Route exact path = "/mentors" element = {<MentorPage/>}/>
             <Route exact path = "/company" element = {<CompanyPage/>}/>
+            <Route exact path = "/createtraining" element = {<CreateTrainingPage/>}/>
+
 
         </Routes>
     </Router>)
