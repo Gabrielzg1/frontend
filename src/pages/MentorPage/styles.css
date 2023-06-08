@@ -6,14 +6,10 @@ body{
 
 }
 
-h1{
+.mentor-title{
 
-    margin-left: 50px;
-    margin-top: 70px;
-    font-size: 30px;
-    font-weight: 400px;
-    text-align: left;
-    color:whitesmoke;
+margin: 30px 30px;
+color: black;
     
 }
 
@@ -55,6 +51,7 @@ h1{
 
 
 #boxlistamentor{
+    list-style-type: none;
 
     margin-left: 40px;
     color:white;

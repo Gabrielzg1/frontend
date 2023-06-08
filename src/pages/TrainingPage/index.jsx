@@ -12,15 +12,13 @@ const TrainingPage = () => {
 	const [loading, isLoading] = useState(false);
 	const [error, setError] = useState(false);
 
-
-
 	if (loading) {
 		return <Loader />;
 	}
 	return (
 		<div>
-            <Navbar/>
-            <h1>Training Page</h1>
+			<Navbar />
+			<h1 className="training-title">Training Page</h1>
 		</div>
 	);
 };
