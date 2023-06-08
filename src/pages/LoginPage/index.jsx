@@ -45,7 +45,7 @@ const LoginPage = () => {
 		return <Loader />;
 	}
 	return (
-		<div>
+		<div className="login-body">
 			<Navbar />
 			<div className="login-box">
 				<p>Login</p>

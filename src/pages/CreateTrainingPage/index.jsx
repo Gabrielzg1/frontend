@@ -1,9 +1,8 @@
 import React, { useState, useContext } from "react";
-import { register } from "../../services/api";
-import { useNavigate, useLocation } from "react-router-dom";
+
+import { useNavigate } from "react-router-dom";
 import Loader from "../../Containers/Loader";
 import "./styles.css";
-import Buttons from "../../Containers/Buttons/index";
 import Navbar from "../../Containers/Navbar";
 
 const CreateTrainingPage = () => {
@@ -83,45 +82,9 @@ const CreateTrainingPage = () => {
                 </div>
 
                 <h2>Criação do Teste de Aptidão 'Quiz'</h2>
-
-                <div>
-                    <button 
-                        onClick={cria}
-                    >
-                        Adicionar uma Pergunta ao Quiz
-                    </button>
-                </div>
-
-                <div>
-
-
-                    {inputvalue.map((inputvalue, index) => (
-
-                        <div>
-                            <input
-                            type="text"
-                            placeholder={`Pergunta ${index+1}`}
-                            />
-
-                            <input
-                            type="text"
-                            placeholder="Primeira possivel resposta"
-                            />
-
-                            <input
-                            type="text"
-                            placeholder="Segunda possivel resposta"
-                            />
-
-                            <input
-                            type="text"
-                            placeholder="Terceira possivel resposta"
-                            />  
-                        </div>
-  
-                    ))}
-                </div>
-                
+                <input type="button"  value="Criar Quiz"onClick={() => {
+                    navigate("/createquiz")
+                }} />
 
             </div>
 		</div>
