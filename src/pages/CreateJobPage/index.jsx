@@ -5,7 +5,7 @@ import Loader from "../../Containers/Loader";
 import "./styles.css";
 import Navbar from "../../Containers/Navbar";
 
-const CreateTrainingPage = () => {
+const CreateJobPage = () => {
 	const navigate = useNavigate();
 	const [failError, setFailError] = useState(false);
 	const [loading, isLoading] = useState(false);
@@ -84,4 +84,4 @@ const CreateTrainingPage = () => {
 	);
 };
 
-export default CreateTrainingPage;
+export default CreateJobPage;

@@ -5,10 +5,13 @@ import "./styles.css";
 
 function Navbar() {
 	const [logged, isLogged] = useState(false);
+	const [type, setType] = useState(null);
 	const navigate = useNavigate();
 	const loadData = async () => {
 		try {
 			const id = localStorage.getItem("id");
+			const option = localStorage.getItem("type");
+			if (option) setType(option);
 			if (id !== null) isLogged(true);
 		} catch (err) {
 			console.error(err);
@@ -39,7 +42,7 @@ function Navbar() {
 					{logged === true ? (
 						<>
 							<li>
-								<a href="/users">UserPage</a>
+								<a href={`/${type}`}>Perfil</a>
 							</li>
 							<li>
 								<a onClick={logout}>Logout</a>

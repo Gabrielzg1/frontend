@@ -10,15 +10,18 @@ const CompanyPage = () => {
 	const [loading, isLoading] = useState(false);
 	const [error, setError] = useState(false);
 
-
-
 	if (loading) {
 		return <Loader />;
 	}
 	return (
 		<div>
-            <Navbar/>
-            <h1>Company Page</h1>
+			<Navbar />
+			<h1>Company Page</h1>
+			<input
+				type="button"
+				value="Criar vaga"
+				onClick={() => navigate("/createjob")}
+			/>
 		</div>
 	);
 };

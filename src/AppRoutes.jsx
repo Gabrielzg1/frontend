@@ -12,6 +12,7 @@ import CompanyPage from "./pages/CompanyPage";
 import MentorPage from "./pages/MentorPage";
 import CreateTrainingPage from "./pages/CreateTrainingPage";
 import QuizCreationPage from "./pages/CreateQuizPage";
+import CreateJobPage from "./pages/CreateJobPage";
 
 const AppRoutes = () => {
 	return (
@@ -27,6 +28,7 @@ const AppRoutes = () => {
 				<Route exact path="/company" element={<CompanyPage />} />
 				<Route exact path="/createtraining" element={<CreateTrainingPage />} />
 				<Route exact path="/createquiz" element={<QuizCreationPage />} />
+				<Route exact path="/createjob" element={<CreateJobPage />} />
 			</Routes>
 		</Router>
 	);
