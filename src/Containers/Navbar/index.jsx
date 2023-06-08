@@ -35,21 +35,6 @@ function Navbar() {
 					<li>
 						<a href="/">Home</a>
 					</li>
-<<<<<<< Updated upstream
-=======
-					
-					
-					{ (logged === true) ? 
-					<>
-					
-					<li>
-						<a href="/users">UserPage</a>
-					</li> 
-					<li>
-						<a onClick={logout}>Logout</a>
-					</li> 
-					
->>>>>>> Stashed changes
 
 					{logged === true ? (
 						<>
