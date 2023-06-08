@@ -22,7 +22,7 @@ const CreateTrainingPage = () => {
 	};
 
 	return (
-		<div>
+		<div id="bodytrainingcreate">
 			<Navbar />
 			<h1 className="create-training-title"> Create Training Page</h1>
 
@@ -40,9 +40,9 @@ const CreateTrainingPage = () => {
 					/>
 				</div>
 
-				<label>Data Inscrição</label>
+				<label id="label">Data Inscrição</label>
 
-				<div>
+				<div id="divinscricao">
 					<label id="label">Inicio</label>
 					<input
 						type="date"
@@ -52,29 +52,43 @@ const CreateTrainingPage = () => {
 
 					<label id="label">Fim</label>
 
-					<input type="date" placeholder="Fim da Inscrição" />
+					<input type="date" placeholder="Fim da Inscrição" id="input-trainingpagedata" />
+
+                    <input type="text" placeholder="Numero minimo de Participantes" id="input-trainingpageparti"/>
+
 				</div>
 
-				<div>
-					<input type="date" placeholder="Inicio do Treinamento" />
-					<input type="date" placeholder="Fim do Treinamento" />
+                <label id="label">Data Treinamento</label>
+
+				<div id="divtreinamento">
+                
+                    <label id="label">Inicio</label>
+					<input type="date" placeholder="Inicio do Treinamento" id="input-trainingpagedata"/>
+
+                    <label id="label">Fim</label>
+					<input type="date" placeholder="Fim do Treinamento" id="input-trainingpagedata"/>
+
+                    <input type="text" placeholder="Numero maximo de Participantes" id="input-trainingpageparti" />
+
 				</div>
+                <br></br>
+                <br></br>
+
+                
+
+                <label id="label">Descrição</label>
 
 				<div>
-					<textarea name="" id="" cols="30" rows="10">
+					<textarea name="" cols="30" rows="10" id="descricao-training">
 						{" "}
 					</textarea>
 				</div>
 
-				<div>
-					<input type="text" placeholder="Numero minimo de Participantes" />
-					<input type="text" placeholder="Numero maximo de Participantes" />
-				</div>
-
-				<h2>Criação do Teste de Aptidão 'Quiz'</h2>
+				<h3>Criação do Teste de Aptidão 'Quiz'</h3>
 				<input
 					type="button"
 					value="Criar Quiz"
+                    id="botaotraining"
 					onClick={() => {
 						navigate("/createquiz");
 					}}
