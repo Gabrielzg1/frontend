@@ -63,6 +63,7 @@ const QuizCreationPage = () => {
 
   return (
     <div className="quiz-body">
+      <h1 className="titulo-quiz">Quiz</h1>
       <div className="quiz-container">
         {questions.map((question, questionIndex) => (
           <div className="question" key={questionIndex}>

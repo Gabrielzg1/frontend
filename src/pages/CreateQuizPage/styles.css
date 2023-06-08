@@ -1,16 +1,22 @@
 .quiz-body{
-  background-color: #333;
+  background: lightgrey;
+  background-size: cover;
   height: 1000vh;
   margin: 0;
-  padding: 0;  
+  padding: 20px 20px;  
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.titulo-quiz{
+    text-align: center;
 }
 .quiz-container {
-    background-color: white;
-    color: black;
+    background-color: rgba(0,0,0,.9);
+    color: white;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    max-width: 800px;
+    box-shadow: 0 2px 4px rgba(0,0,0,.9);
+    max-width: 65%;
     margin: 10px auto ;
   }
   
@@ -22,7 +28,9 @@
     width: 90%;
     padding: 10px;
     margin-bottom: 10px;
-    border: 1px solid black;
+    color:white;
+    background-color: transparent;
+    border: 1px solid rgb(255, 255, 255);
     border-radius: 8px 8px 0 0;
   }
   
@@ -30,7 +38,9 @@
     width: 60%;
     padding: 10px;
     margin-bottom: 10px;
-    border: 1px solid black;
+    color:white;
+    background-color: transparent;
+    border: 1px solid rgb(255, 255, 255);
     border-radius: 0 0 8px 8px;
   }
   
@@ -47,8 +57,8 @@
   .add-button,
   .delete-button,
   .generate-json-button {
-    background-color: black;
-    color: white;
+    background-color: whitesmoke;
+    color: black;
     border: none;
     padding: 10px;
     margin-bottom: 10px;
@@ -59,6 +69,6 @@
   .add-button:hover,
   .delete-button:hover,
   .generate-json-button:hover {
-    background-color: #333;
+    background-color: rgb(170, 170, 170);
   }
   
