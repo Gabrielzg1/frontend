@@ -36,24 +36,35 @@ const CreateTrainingPage = () => {
                     <input 
                     type="text"
                     placeholder="Nome Comercial"
-
+                    id = "input-trainingpage"
                     />
                     <input 
                     type="text"
                     placeholder="Carga Horaria"
+                    id="input-trainingpagehorario"
                     /> 
                 </div>
 
+                <label>Data Inscrição</label>
+
                 <div>
-                    <input 
+
+                    <label id="label">Inicio</label>
+                    <input
                     type="date"
                     placeholder="Inicio da Inscrição"
+                    id="input-trainingpagedata"
                     />
+
+                    <label id="label">Fim</label>
+
                     <input 
                     type="date"
                     placeholder="Fim da Inscrição"
                     />
+                </div>
 
+                <div>
                     <input 
                     type="date"
                     placeholder="Inicio do Treinamento"

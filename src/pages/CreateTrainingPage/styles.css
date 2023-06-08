@@ -11,7 +11,7 @@ body{
 
     margin-top: 50px;
     margin-left: 50px;
-    padding: 5px 10px;
+    padding: 10px 10px;
     font-size: 20px;
     height: auto;
     max-width: 1200px;
@@ -20,3 +20,55 @@ body{
     box-shadow: 0 15px 25px rgba(0,0,0,.6);
     border-radius: 4px;
 }
+
+#input-trainingpage{
+
+    background-color: transparent;
+    width: 50%;
+    margin-right: 140px;
+    margin-bottom: 25px;
+    border: 0;
+    outline: none;
+    padding: 10px 0;
+    color:white;
+    font-size: 16px;
+    border-bottom: 1px solid #fff;
+
+}
+
+#label{
+
+    font-family: 'Times New Roman', Times, serif;
+    margin-right: 20px;
+    margin-top: 20px;
+
+}
+
+#input-trainingpagehorario{
+
+    background-color: transparent;
+    width: 20%;
+    margin-right: 140px;
+    margin-bottom: 25px;
+    border: 0;
+    outline: none;
+    padding: 10px 0;
+    color:white;
+    font-size: 16px;
+    border-bottom: 1px solid #fff;
+}
+
+
+#input-trainingpagedata{
+
+    background-color: transparent;
+    margin-right: 140px;
+    border: 0;
+    outline: none;
+    padding: 1px;
+    color:white;
+    font-size: 16px;
+    border-bottom: 1px solid #fff;
+
+}
+

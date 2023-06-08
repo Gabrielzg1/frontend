@@ -21,10 +21,10 @@ const MainPage = () => {
 
 	const navigate = useNavigate();
 	return (
-		<div id="main">
-			<Navbar />
-			<h1 className="title">Main Page</h1>
-		</div>
+			<div id="main">
+				<Navbar />
+				<h1 className="title">Main Page</h1>
+			</div>
 	);
 };
 export default MainPage;
