@@ -1,24 +1,33 @@
-.main-body {
-    background-color: white;
-    color: black;
-    display: grid;
-    place-items: center;
-  }
-  
-  .main-title {
-    color: black;
-  }
-  
-  .main-button {
-    background-color: black;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .main-button:hover {
-    background-color: white;
-    color: black;
-  }
-  
+/* styles.css */
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.training-title {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.training-status {
+    font-size: 16px;
+}
+
+.training-item {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.training-item:last-child {
+    margin-bottom: 0;
+}

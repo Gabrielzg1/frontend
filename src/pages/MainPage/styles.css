@@ -1,6 +1,24 @@
-.main{
-    z-index: -1;
-}
-.main-title{
-    margin: 30px 30px;
-}
+.main-body {
+    background-color: white;
+    color: black;
+    display: grid;
+    place-items: center;
+  }
+  
+  .main-title {
+    color: black;
+  }
+  
+  .main-button {
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .main-button:hover {
+    background-color: white;
+    color: black;
+  }
+  
