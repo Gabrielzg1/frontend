@@ -17,12 +17,15 @@ const AdminPage = () => {
 		return <Loader />;
 	}
 	return (
-		<div>
-            <Navbar/>
-            <h1>Admin Page</h1>
-			<button
-			onClick={()=> {navigate("/createtraining")}}>
-				Criar Treinamento</button>
+
+		<div id="body-admin">
+			<div >
+				<Navbar/>
+				<h1>Admin Page</h1>
+				<button
+				onClick={()=> {navigate("/createtraining")}}>
+					Criar Treinamento</button>
+			</div>
 		</div>
 	);
 };
