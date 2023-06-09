@@ -1,101 +1,192 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 
 import { useNavigate } from "react-router-dom";
 import Loader from "../../Containers/Loader";
 import "./styles.css";
 import Navbar from "../../Containers/Navbar";
+import { createTraining } from "../../services/api";
 
 const CreateTrainingPage = () => {
-	const navigate = useNavigate();
-	const [failError, setFailError] = useState(false);
-	const [loading, isLoading] = useState(false);
-	const [error, setError] = useState(false);
+  const navigate = useNavigate();
+  const [failError, setFailError] = useState(false);
+  const [loading, isLoading] = useState(false);
+  const [error, setError] = useState(false);
 
-	const [inputvalue, setInputvalue] = useState([""]);
+  //Preenchendo os campos para criar o treinamento
+  const [name, setName] = useState();
+  const [workload, setWorkload] = useState();
+  const [initialInscriptionDate, setinitialInscriptionDate] = useState();
+  const [finalInscriptionDate, setFinalInscriptionDate] = useState();
+  const [initialTrainingDate, setinitialTrainingDate] = useState();
+  const [finalTrainingDate, setFinalTrainingDate] = useState();
+  const [maximumAmount, setMaximumAmount] = useState();
+  const [minimumAmount, setMinimumAmount] = useState();
 
-	if (loading) {
-		return <Loader />;
-	}
+  const loadData = async (query = "") => {
+    try {
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
-	const cria = () => {
-		setInputvalue([...inputvalue, ""]);
-	};
+  useEffect(() => {
+    (async () => await loadData())();
+  }, []);
 
-	return (
-		<div id="bodytrainingcreate">
-			<Navbar />
-			<h1 className="create-training-title"> Create Training Page</h1>
+  if (loading) {
+    return <Loader />;
+  }
 
-			<div id="boxcriatreino">
-				<div>
-					<input
-						type="text"
-						placeholder="Nome Comercial"
-						id="input-trainingpage"
-					/>
-					<input
-						type="text"
-						placeholder="Carga Horaria"
-						id="input-trainingpagehorario"
-					/>
-				</div>
+  const handleName = (event) => {
+    setName(event.target.value);
+  };
+  const handleWorload = (event) => {
+    setWorkload(event.target.value);
+  };
+  const handleminimumAmount = (event) => {
+    setMinimumAmount(event.target.value);
+  };
+  const handlemaximumAmount = (event) => {
+    setMaximumAmount(event.target.value);
+  };
 
-				<label id="label">Data Inscrição</label>
+  const handleinitialInscriptionDate = (event) => {
+    setinitialInscriptionDate(event.target.value);
+  };
 
-				<div id="divinscricao">
-					<label id="label">Inicio</label>
-					<input
-						type="date"
-						placeholder="Inicio da Inscrição"
-						id="input-trainingpagedata"
-					/>
+  const hancdlefinalInscriptionDate = (event) => {
+    setFinalInscriptionDate(event.target.value);
+  };
+  const handleinitialTrainingDate = (event) => {
+    setinitialTrainingDate(event.target.value);
+  };
 
-					<label id="label">Fim</label>
+  const handlefinalTrainingDate = (event) => {
+    setFinalTrainingDate(event.target.value);
+  };
 
-					<input type="date" placeholder="Fim da Inscrição" id="input-trainingpagedata" />
+  const createtraining = async () => {
+    // Aqui você pode enviar `data` para sua API
+    console.log(
+      name,
+      initialInscriptionDate,
+      finalInscriptionDate,
+      initialTrainingDate,
+      finalTrainingDate,
+      workload,
+      minimumAmount,
+      maximumAmount
+    ); // Exemplo de exibição do valor no console
+    const response = await createTraining(
+      name,
+      initialInscriptionDate,
+      finalInscriptionDate,
+      initialTrainingDate,
+      finalTrainingDate,
+      workload,
+      minimumAmount,
+      maximumAmount
+    );
+    navigate("/createquiz", { state: { id: response.data._id } });
+  };
 
-                    <input type="text" placeholder="Numero minimo de Participantes" id="input-trainingpageparti"/>
+  return (
+    <div id="bodytrainingcreate">
+      <Navbar />
+      <h1 className="create-training-title"> Create Training Page</h1>
 
-				</div>
+      <div id="boxcriatreino">
+        <br />
+        <br />
+        <div>
+          <input
+            value={name}
+            type="text"
+            placeholder="Nome Comercial"
+            id="input-trainingpage"
+            onChange={handleName}
+          />
+          <input
+            type="text"
+            placeholder="Carga Horaria (somente o número em horas)"
+            id="input-trainingpagehorario"
+            onChange={handleWorload}
+          />
+        </div>
 
-                <label id="label">Data Treinamento</label>
+        <label id="label">Data Inscrição</label>
 
-				<div id="divtreinamento">
-                
-                    <label id="label">Inicio</label>
-					<input type="date" placeholder="Inicio do Treinamento" id="input-trainingpagedata"/>
+        <div id="divinscricao">
+          <label id="label">Inicio</label>
+          <input
+            type="date"
+            placeholder="Inicio da Inscrição"
+            id="input-trainingpagedata"
+            onChange={handleinitialInscriptionDate}
+          />
 
-                    <label id="label">Fim</label>
-					<input type="date" placeholder="Fim do Treinamento" id="input-trainingpagedata"/>
+          <label id="label">Fim</label>
 
-                    <input type="text" placeholder="Numero maximo de Participantes" id="input-trainingpageparti" />
+          <input
+            type="date"
+            placeholder="Fim da Inscrição"
+            id="input-trainingpagedata"
+            onChange={hancdlefinalInscriptionDate}
+          />
 
-				</div>
-                <br></br>
-                <br></br>
+          <input
+            type="text"
+            placeholder="Numero minimo de Participantes"
+            id="input-trainingpageparti"
+            onChange={handleminimumAmount}
+          />
+        </div>
 
-                
+        <label id="label">Data Treinamento</label>
 
-                <label id="label">Descrição</label>
+        <div id="divtreinamento">
+          <label id="label">Inicio</label>
+          <input
+            type="date"
+            placeholder="Inicio do Treinamento"
+            id="input-trainingpagedata"
+            onChange={handleinitialTrainingDate}
+          />
 
-				<div>
-					<textarea name="" cols="30" rows="10" id="descricao-training">
-						{" "}
-					</textarea>
-				</div>
+          <label id="label">Fim</label>
+          <input
+            type="date"
+            placeholder="Fim do Treinamento"
+            id="input-trainingpagedata"
+            onChange={handlefinalTrainingDate}
+          />
 
-				<h3>Criação do Teste de Aptidão 'Quiz'</h3>
-				<input
-					type="button"
-					value="Criar Quiz"
-                    id="botaotraining"
-					onClick={() => {
-						navigate("/createquiz");
-					}}
-				/>
-			</div>
-		</div>
-	);
+          <input
+            type="text"
+            placeholder="Numero maximo de Participantes"
+            id="input-trainingpageparti"
+            onChange={handlemaximumAmount}
+          />
+        </div>
+        <br></br>
+        <br></br>
+
+        <label id="label">Descrição</label>
+
+        <div>
+          <textarea name="" cols="30" rows="10" id="descricao-training">
+            {" "}
+          </textarea>
+        </div>
+        <input
+          type="button"
+          value="Criar Treinamento"
+          id="botaotraining"
+          onClick={createtraining}
+        />
+      </div>
+    </div>
+  );
 };
 
 export default CreateTrainingPage;

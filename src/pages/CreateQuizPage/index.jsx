@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import "./styles.css";
 
 const QuizCreationPage = () => {
@@ -6,6 +7,20 @@ const QuizCreationPage = () => {
     { question: "", answers: ["", "", "", ""], answer: "" },
   ]);
   const [empty, isEmpty] = useState(true);
+  const { state } = useLocation();
+  const { id } = state;
+
+  const loadData = async (query = "") => {
+    try {
+      console.log(id);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  useEffect(() => {
+    (async () => await loadData())();
+  }, []);
 
   const handleQuestionChange = (e, questionIndex) => {
     const { value } = e.target;
@@ -113,7 +128,7 @@ const QuizCreationPage = () => {
         </button>
         <br />
         <button className="generate-json-button" onClick={createQuiz}>
-          Criar Quiz
+          Criar
         </button>
       </div>
     </div>
