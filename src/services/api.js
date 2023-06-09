@@ -23,7 +23,7 @@ export const register = async (option, username, email, password) => {
   return api.post(`${option}`, { username, email, password });
 };
 export const getTraining = async (id) => {
-  return api.get(`/training`, { id });
+  return api.get(`/training/${id}`);
 };
 export const createTraining = async (
   name,

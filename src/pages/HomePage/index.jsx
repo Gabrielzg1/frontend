@@ -25,8 +25,8 @@ const HomePage = () => {
   return (
     <div className="container">
       <div className="title">Feed de Treinamento</div>
-      {trainings.map((training, index) => (
-        <div className="training-item" key={index}>
+      {trainings.map((training) => (
+        <div className="training-item" key={training._id}>
           <input
             type="button"
             className="training-title"

@@ -13,11 +13,13 @@ const TrainingPage = () => {
   const [failError, setFailError] = useState(false);
   const [loading, isLoading] = useState(false);
   const [error, setError] = useState(false);
+  const [name, setname] = useState("");
 
   const loadData = async (query = "") => {
     try {
       const response = await getTraining(id);
       console.log(response.data);
+      setname(response.data.name);
     } catch (err) {}
   };
   useEffect(() => {
@@ -31,6 +33,7 @@ const TrainingPage = () => {
     <div>
       <Navbar />
       <h1 className="training-title">Training Page</h1>
+      <h2>{name}</h2>
     </div>
   );
 };
