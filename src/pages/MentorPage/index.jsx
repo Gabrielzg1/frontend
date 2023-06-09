@@ -16,7 +16,10 @@ const MentorPage = () => {
     try {
       const id = localStorage.getItem("id");
       const type = localStorage.getItem("type");
-      if (id === null || type !== "mentors") navigate("/login");
+      if (id === null || type !== "mentors") {
+        navigate("/login");
+        localStorage.clear();
+      }
     } catch (err) {
       console.error(err);
       navigate("/login");
