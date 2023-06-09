@@ -1,0 +1,74 @@
+.quiz-body{
+  background: lightgrey;
+  background-size: cover;
+  height: 1000vh;
+  margin: 0;
+  padding: 20px 20px;  
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.titulo-quiz{
+    text-align: center;
+}
+.quiz-container {
+    background-color: rgba(0,0,0,.9);
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,.9);
+    max-width: 65%;
+    margin: 10px auto ;
+  }
+  
+  .question {
+    margin-bottom: 20px;
+  }
+  
+  .question-input {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 10px;
+    color:white;
+    background-color: transparent;
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 8px 8px 0 0;
+  }
+  
+  .answer-input {
+    width: 60%;
+    padding: 10px;
+    margin-bottom: 10px;
+    color:white;
+    background-color: transparent;
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 0 0 8px 8px;
+  }
+  
+  .answer-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+  
+  .radio-input {
+    margin-right: 5px;
+  }
+  
+  .add-button,
+  .delete-button,
+  .generate-json-button {
+    background-color: whitesmoke;
+    color: black;
+    border: none;
+    padding: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .add-button:hover,
+  .delete-button:hover,
+  .generate-json-button:hover {
+    background-color: rgb(170, 170, 170);
+  }
+  

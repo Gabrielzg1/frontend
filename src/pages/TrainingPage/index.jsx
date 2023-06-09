@@ -1,5 +1,5 @@
-import React, { useState, useContext } from "react";
-import { register } from "../../services/api";
+import React, { useState, useContext, useEffect } from "react";
+import { getTraining, getTrainings, register } from "../../services/api";
 import { useNavigate, useLocation } from "react-router-dom";
 import Loader from "../../Containers/Loader";
 import "./styles.css";
@@ -7,22 +7,35 @@ import Buttons from "../../Containers/Buttons/index";
 import Navbar from "../../Containers/Navbar";
 
 const TrainingPage = () => {
-	const navigate = useNavigate();
-	const [failError, setFailError] = useState(false);
-	const [loading, isLoading] = useState(false);
-	const [error, setError] = useState(false);
+  const navigate = useNavigate();
+  const { state } = useLocation();
+  const { id } = state;
+  const [failError, setFailError] = useState(false);
+  const [loading, isLoading] = useState(false);
+  const [error, setError] = useState(false);
+  const [name, setname] = useState("");
 
+  const loadData = async (query = "") => {
+    try {
+      const response = await getTraining(id);
+      console.log(response.data);
+      setname(response.data.name);
+    } catch (err) {}
+  };
+  useEffect(() => {
+    (async () => await loadData())();
+  }, []);
 
-
-	if (loading) {
-		return <Loader />;
-	}
-	return (
-		<div>
-            <Navbar/>
-            <h1>Training Page</h1>
-		</div>
-	);
+  if (loading) {
+    return <Loader />;
+  }
+  return (
+    <div>
+      <Navbar />
+      <h1 className="training-title">Training Page</h1>
+      <h2>{name}</h2>
+    </div>
+  );
 };
 
 export default TrainingPage;

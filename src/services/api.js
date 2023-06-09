@@ -22,3 +22,27 @@ export const getTrainings = async () => {
 export const register = async (option, username, email, password) => {
   return api.post(`${option}`, { username, email, password });
 };
+export const getTraining = async (id) => {
+  return api.get(`/training/${id}`);
+};
+export const createTraining = async (
+  name,
+  initialInscriptionDate,
+  finalInscriptionDate,
+  initialTrainingDate,
+  finalTrainingDate,
+  workload,
+  minimumAmount,
+  maximumAmount
+) => {
+  return api.post(`/training`, {
+    name,
+    initialInscriptionDate,
+    finalInscriptionDate,
+    initialTrainingDate,
+    finalTrainingDate,
+    workload,
+    minimumAmount,
+    maximumAmount,
+  });
+};

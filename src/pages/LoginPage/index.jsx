@@ -23,15 +23,15 @@ const LoginPage = () => {
 	const hadleLogin = async () => {
 		try {
 			setFailError(false);
-			setError(false)
+			setError(false);
 			isLoading(true);
 			const response = await login(email, password, option);
 			console.log(response.data);
 			if (response.data.msg === true) {
-				localStorage.setItem('id', response.data.id);
+				localStorage.setItem("id", response.data.id);
+				localStorage.setItem("type", option);
 				navigate(`/${option}`);
-			}
-			else setFailError(true);
+			} else setFailError(true);
 			isLoading(false);
 		} catch (err) {
 			console.log(err);
@@ -45,7 +45,7 @@ const LoginPage = () => {
 		return <Loader />;
 	}
 	return (
-		<div>
+		<div className="login-body">
 			<Navbar />
 			<div className="login-box">
 				<p>Login</p>

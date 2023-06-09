@@ -1,30 +1,46 @@
-body{
+body {
     font-family: 'Times New Roman', Times, serif;
     font-weight: 400;
     padding: 0;
     margin: 0
-
 }
 
 
-#boxtask1{
+
+
+#boxtask1 {
 
     margin-top: 50px;
     margin-left: 50px;
     padding: 5px 10px;
     font-size: 20px;
     height: auto;
-    max-width: 1200px;
-    background: rgba(0,0,0,.9);
+    width: 85%;
+    background: rgba(0, 0, 0, .9);
     color: rgb(230, 226, 226);
-    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
     border-radius: 4px;
 
 
 }
 
+.popup {
 
-#endtask{
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    color: black;
+    top: 50%;
+}
+
+
+#endtask {
 
 
     display: flex;
@@ -34,7 +50,24 @@ body{
     padding: 10px 5px 10px 5px;
     height: auto;
     width: 97%;
-   /* border: 1.5px solid black;*/
+    /* border: 1.5px solid black;*/
+    z-index: -1;
+    background-color: transparent;
+
+
+}
+
+#disapprove {
+
+
+    display: flex;
+    border-radius: 5px;
+    font-size: 20px;
+    flex-wrap: wrap;
+    padding: 10px 5px 10px 5px;
+    height: auto;
+    width: 97%;
+    /* border: 1.5px solid black;*/
     z-index: -1;
     background-color: transparent;
 
@@ -44,13 +77,19 @@ body{
 
 
 
-#boxtask{
+
+#boxtask {
 
     margin-left: 40px;
-    color:white;
+    color: white;
+    list-style-type: none;
+    border-style: 1px white;
+    border-radius: 0.5rem;
+
+
 }
 
-#botao{
+#botao {
 
     font-family: 'Times New Roman', Times, serif;
 
@@ -58,28 +97,26 @@ body{
     width: auto;
     font-size: 20px;
     font-weight: 400;
-    color:white;
+    color: white;
     background-color: transparent;
-    border: 0;   
+    border: 0;
 }
 
-#botao:hover{
+#botao:hover {
 
     background-color: whitesmoke;
-    color:black;
+    color: black;
     cursor: pointer;
     border-radius: 4px;
 }
 
 
 
-h1{
-
-    margin-left: 50px;
-    margin-top: 50px;
+.user-title {
+    margin: 50px 60px;
     font-size: 30px;
     font-weight: 400px;
     text-align: left;
-    color:whitesmoke;
-    
+    color: rgb(0, 0, 0);
+
 }

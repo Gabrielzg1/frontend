@@ -1,6 +1,6 @@
-body{
+.login-body{
   background-size: 1000px 1000px;
-  background-image: linear-gradient(grey, lightgrey, white);
+  background-image: linear-gradient(rgb(229, 229, 229), lightgrey, white);
 }
 
 
