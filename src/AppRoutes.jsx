@@ -13,12 +13,14 @@ import MentorPage from "./pages/MentorPage";
 import CreateTrainingPage from "./pages/CreateTrainingPage";
 import QuizCreationPage from "./pages/CreateQuizPage";
 import CreateJobPage from "./pages/CreateJobPage";
+import HomePage from "./pages/HomePage";
 
 const AppRoutes = () => {
 	return (
 		<Router>
 			<Routes>
 				<Route exact path="/" element={<MainPage />} />
+				<Route exact path="/home" element={<HomePage />} />
 				<Route exact path="/login" element={<LoginPage />} />
 				<Route exact path="/users" element={<UserPage />} />
 				<Route exact path="/register" element={<RegisterPage />} />

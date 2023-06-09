@@ -36,7 +36,7 @@ function Navbar() {
 			<div className="wrapper">
 				<ul>
 					<li>
-						<a href="/">Home</a>
+						<a href="/home">Home</a>
 					</li>
 
 					{logged === true ? (

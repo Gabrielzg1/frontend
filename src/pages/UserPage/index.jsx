@@ -6,11 +6,14 @@ import Navbar from "../../Containers/Navbar";
 
 const UserPage = () => {
 	const navigate = useNavigate();
-	const [applied, setApplied] = useState([
-		{ name: "Estrutura", reason: "presença" },
-		{ name: "POO", reason: "nota" },
-	]);
 	const [showPopup, setShowPopup] = useState(false);
+	const [name, setname] = useState("");
+	const [reason, setReason] = useState("");
+
+	//Trainings
+	const [finished, setFinished] = useState([]);
+	const [disapprove, setDisapprove] = useState([]);
+	const [applied, setApplied] = useState([]);
 
 	const handleMouseEnter = () => {
 		setShowPopup(true);
@@ -19,24 +22,16 @@ const UserPage = () => {
 	const handleMouseLeave = () => {
 		setShowPopup(false);
 	};
-	const [name, setname] = useState("Nome do usuário");
-	const [reason, setReason] = useState("");
-	const [finished, setFinished] = useState([
-		{ name: "Estrutura", reason: "presença" },
-		{ name: "POO", reason: "nota" },
-	]);
-	const [disapprove, setDisapprove] = useState([
-		{ name: "Estrutura", reason: "presença" },
-		{ name: "POO", reason: "nota" },
-	]);
+
 	const loadData = async (query = "") => {
 		try {
 			const id = localStorage.getItem("id");
 			if (id === null) navigate("/login");
 			const response = await getUser(id);
-			//setApplied(response.data.applied)
-			//setname(response.data.username)
-			//setFinished(response.data.finished)
+			setApplied(response.data.applied);
+			setname(response.data.username);
+			setFinished(response.data.finished);
+			setDisapprove(response.data.disapprove);
 			console.log(response.data);
 		} catch (err) {
 			console.error(err);
@@ -58,7 +53,7 @@ const UserPage = () => {
 					<h2>Treinamentos que se candidatou</h2>
 					<div id="endtask">
 						{applied.map((item) => (
-							<li id="boxtask">
+							<li id="boxtask" key={item.id}>
 								<button
 									id="botao"
 									onClick={() => {
@@ -79,7 +74,7 @@ const UserPage = () => {
 					<h2>Treinamentos concluidos</h2>
 					<div id="endtask">
 						{finished.map((item) => (
-							<li id="boxtask">
+							<li id="boxtask" key={item.id}>
 								<button
 									id="botao"
 									onClick={() => {
@@ -100,6 +95,7 @@ const UserPage = () => {
 					<div id="disapprove">
 						{disapprove.map((item) => (
 							<li
+								key={item.id}
 								id="boxtask"
 								onMouseEnter={() => {
 									handleMouseEnter();
