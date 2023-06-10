@@ -14,6 +14,8 @@ import CreateTrainingPage from "./pages/CreateTrainingPage";
 import QuizCreationPage from "./pages/CreateQuizPage";
 import CreateJobPage from "./pages/CreateJobPage";
 import HomePage from "./pages/HomePage";
+import ShowJobPage from "./pages/ShowJobPage";
+
 
 const AppRoutes = () => {
 	return (
@@ -31,6 +33,8 @@ const AppRoutes = () => {
 				<Route exact path="/createtraining" element={<CreateTrainingPage />} />
 				<Route exact path="/createquiz" element={<QuizCreationPage />} />
 				<Route exact path="/createjob" element={<CreateJobPage />} />
+				<Route exact path="/showjob" element={<ShowJobPage />} />
+
 			</Routes>
 		</Router>
 	);

@@ -10,14 +10,98 @@ const CompanyPage = () => {
   const [loading, isLoading] = useState(false);
   const [error, setError] = useState(false);
 
+  const [tasks, setTasks] = useState(["AA"]);
+  const [cursos,setCursos] = useState(["Curso1"]);
+  const [vagas, setVagas] = useState(["Vaga2"]);
+
+
   if (loading) {
     return <Loader />;
   }
   return (
-    <div>
+    <div id="maincompany-page">
       <Navbar />
-      <h1>Company Page</h1>
+
+      <div id="companytitle">
+        <h1>Company Page</h1>
+      </div>
+
+      <div id="boxcompany">
+
+        <ul>
+          
+          {" "}
+          <h2>Ultimas atividades concluídas pelos alunos.</h2>
+
+          <div id="taskcompany">
+                {tasks.map((item) => (
+                  <li id="boxlistacompany">
+                    <button
+                      id="botaocompany"
+                      onClick={() => {
+                        navigate("/training");
+                      }}
+                    >
+                      {item}
+                    </button>
+                  </li>
+                ))}
+          </div>
+        </ul>
+      </div> 
+
+      <div id="boxcompany">
+
+        <ul>
+          
+          {" "}
+          <h2>Notas Cursos</h2>
+
+          <div id="taskcompany">
+                {cursos.map((item) => (
+                  <li id="boxlistacompany">
+                    <button
+                      id="botaocompany"
+                      onClick={() => {
+                        navigate("/training");
+                      }}
+                    >
+                      {item}
+                    </button>
+                  </li>
+                ))}
+          </div>
+        </ul>
+      </div> 
+
+      <div id="boxcompany">
+
+        <ul>
+          
+          {" "}
+          <h2>Vagas de Emprego</h2>
+
+          <div id="taskcompany">
+                {vagas.map((item) => (
+                  <li id="boxlistacompany">
+                    <button
+                      id="botaocompany"
+                      onClick={() => {
+                        navigate("/training");
+                      }}
+                    >
+                      {item}
+                    </button>
+                  </li>
+                ))}
+          </div>
+        </ul>
+      </div>           
+
+
       <input
+
+        id="botaocreatejobcompany"
         type="button"
         value="Criar vaga"
         onClick={() => navigate("/createjob")}
