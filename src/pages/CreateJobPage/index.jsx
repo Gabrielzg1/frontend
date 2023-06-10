@@ -22,63 +22,69 @@ const CreateJobPage = () => {
 	};
 
 	return (
-		<div>
+		<div className="bodycreatejob">
 			<Navbar />
-			<h1 className="create-training-title"> Create Training Page</h1>
+			<h1 className="create-job-title"> Create Job Page</h1>
 
 			<div id="boxcriatreino">
 				<div>
 					<input
 						type="text"
-						placeholder="Nome Comercial"
+						placeholder="Titulo Vaga"
 						id="input-trainingpage"
 					/>
 					<input
 						type="text"
-						placeholder="Carga Horaria"
+						placeholder="Empresa"
 						id="input-trainingpagehorario"
 					/>
 				</div>
 
-				<label>Data Inscrição</label>
-
-				<div>
-					<label id="label">Inicio</label>
-					<input
-						type="date"
-						placeholder="Inicio da Inscrição"
-						id="input-trainingpagedata"
-					/>
-
-					<label id="label">Fim</label>
-
-					<input type="date" placeholder="Fim da Inscrição" />
+				<div id="label-jobcreate">
+					<label >Faixa Salarial</label>
 				</div>
 
-				<div>
-					<input type="date" placeholder="Inicio do Treinamento" />
-					<input type="date" placeholder="Fim do Treinamento" />
+				<div id="divjobcreatesal">
+					<form action="">
+						R$ <input
+						type="number" placeholder="Minimo" name="quantity"
+						step="0.01" min="0.01"  id="input-jobpagesal"
+						/>
+
+						R$ <input type="number" step="0.01"
+						min="0.01" placeholder="Maximo" id="input-jobpagesal"/>	
+					</form>
 				</div>
 
+				<br></br>
+        		<br></br>
+
+				<label id="label-jobcreate">Descrição das Funções a serem desempenhadas</label>
 				<div>
-					<textarea name="" id="" cols="30" rows="10">
+					<textarea name="descricaojobcreate" id="textarea-jobcreate" cols="30" rows="10">
 						{" "}
 					</textarea>
 				</div>
 
+				<br></br>
+
+				<label id="label-jobcreate">Requisitos para a Vaga</label>
 				<div>
-					<input type="text" placeholder="Numero minimo de Participantes" />
-					<input type="text" placeholder="Numero maximo de Participantes" />
+					<textarea name="requisitosjobcreate" id="textarea-jobcreate" cols="30" rows="10">
+						{" "}
+					</textarea>
 				</div>
 
-				<h2>Criação do Teste de Aptidão 'Quiz'</h2>
-				<input
-					type="button"
-					value="Criar Quiz"
+
+				<button 
+
+					id="botaocriarjob"
 					onClick={() => {
-						navigate("/createquiz");
-					}}
-				/>
+						navigate("/company");}}
+				>
+					Criar Job
+				</button>
+				
 			</div>
 		</div>
 	);
