@@ -15,6 +15,9 @@ const UserPage = () => {
   const [disapprove, setDisapprove] = useState([]);
   const [applied, setApplied] = useState([]);
 
+  //Jobs
+  const [jobs, setJobs] = useState([]);
+
   const handleMouseEnter = () => {
     setShowPopup(true);
   };
@@ -123,6 +126,27 @@ const UserPage = () => {
               <p>Motivo: {reason}</p>
             </div>
           )}
+        </ul>
+      </div>
+
+      <div id="boxtask1">
+        <ul>
+          {" "}
+          <h2>Jobs Disponiveis</h2>
+          <div id="endtask">
+            {jobs.map((item) => (
+              <li id="boxtask" key={item.id}>
+                <button
+                  id="botao"
+                  onClick={() => {
+                    navigate("/showjob");
+                  }}
+                >
+                  {item.name}
+                </button>
+              </li>
+            ))}
+          </div>
         </ul>
       </div>
     </div>
