@@ -31,9 +31,10 @@ export const createTraining = async (
   finalInscriptionDate,
   initialTrainingDate,
   finalTrainingDate,
+  description,
   workload,
   minimumAmount,
-  maximumAmount
+  maximumAmount,
 ) => {
   return api.post(`/training`, {
     name,
@@ -41,8 +42,19 @@ export const createTraining = async (
     finalInscriptionDate,
     initialTrainingDate,
     finalTrainingDate,
+    description,
     workload,
     minimumAmount,
     maximumAmount,
   });
 };
+
+export const createaQuiz = async (questions, trainingId) => {
+  return api.post("/quiz", {questions, trainingId})
+
+}
+export const getQuiz = async ( id ) => {
+  return api.post(`/quiz/${id}`)
+
+}
+

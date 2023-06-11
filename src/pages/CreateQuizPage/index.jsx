@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./styles.css";
+import { createaQuiz } from "../../services/api";
 
 const QuizCreationPage = () => {
   const [questions, setQuestions] = useState([
@@ -9,6 +10,7 @@ const QuizCreationPage = () => {
   const [empty, isEmpty] = useState(true);
   const { state } = useLocation();
   const { id } = state;
+  const navigate = useNavigate()
 
   const loadData = async (query = "") => {
     try {
@@ -64,16 +66,23 @@ const QuizCreationPage = () => {
     });
   };
 
-  const createQuiz = () => {
-    const quizData = {
-      questions: questions.map((question) => ({
-        question: question.question,
-        options: question.answers,
-        answer: question.answer,
-      })),
-    };
-
-    console.log(JSON.stringify(quizData));
+  const create = async () => {
+    try {
+      const quizData = {
+        questions: questions.map((question) => ({
+          question: question.question,
+          options: question.answers,
+          answer: question.answer,
+        })),
+      };
+  
+      await createaQuiz(quizData.questions, id)
+      navigate("/home")
+    
+    } catch (error) {
+      console.log(error);
+    }
+   
   };
 
   return (
@@ -127,7 +136,7 @@ const QuizCreationPage = () => {
           +
         </button>
         <br />
-        <button className="generate-json-button" onClick={createQuiz}>
+        <button className="generate-json-button" onClick={create}>
           Criar
         </button>
       </div>

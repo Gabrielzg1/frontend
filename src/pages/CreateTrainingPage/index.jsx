@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 import { useNavigate } from "react-router-dom";
 import Loader from "../../Containers/Loader";
@@ -21,6 +21,7 @@ const CreateTrainingPage = () => {
   const [finalTrainingDate, setFinalTrainingDate] = useState();
   const [maximumAmount, setMaximumAmount] = useState();
   const [minimumAmount, setMinimumAmount] = useState();
+  const [description, setDescription] = useState();
 
   const loadData = async (query = "") => {
     try {
@@ -64,40 +65,40 @@ const CreateTrainingPage = () => {
   const handlefinalTrainingDate = (event) => {
     setFinalTrainingDate(event.target.value);
   };
+  const handleDescription = (event) => {
+    setDescription(event.target.value);
+  };
 
   const createtraining = async () => {
-    // Aqui você pode enviar `data` para sua API
-    console.log(
-      name,
-      initialInscriptionDate,
-      finalInscriptionDate,
-      initialTrainingDate,
-      finalTrainingDate,
-      workload,
-      minimumAmount,
-      maximumAmount
-    ); // Exemplo de exibição do valor no console
-    const response = await createTraining(
-      name,
-      initialInscriptionDate,
-      finalInscriptionDate,
-      initialTrainingDate,
-      finalTrainingDate,
-      workload,
-      minimumAmount,
-      maximumAmount
-    );
-    navigate("/createquiz", { state: { id: response.data._id } });
+    try {
+      const response = await createTraining(
+        name,
+        initialInscriptionDate,
+        finalInscriptionDate,
+        initialTrainingDate,
+        finalTrainingDate,
+        description,
+        workload,
+        minimumAmount,
+        maximumAmount,
+      );
+    
+      navigate("/createquiz", { state: { id: response.data._id } });
+    } catch (error) {
+      setError(true)
+    }
+
   };
+
 
   return (
     <div id="bodytrainingcreate">
       <Navbar />
-      <h1 className="create-training-title"> Create Training Page</h1>
+      <h1 className="create-training-title">Criar treinamento</h1>
 
       <div id="boxcriatreino">
-        <br />
-        <br />
+      {error === true && <p className="error">Valores Indevidos</p>}
+    
         <div>
           <input
             value={name}
@@ -174,7 +175,7 @@ const CreateTrainingPage = () => {
         <label id="label">Descrição</label>
 
         <div>
-          <textarea name="" cols="30" rows="10" id="descricao-training">
+          <textarea name="" cols="30" rows="10" id="descricao-training" onChange={handleDescription}>
             {" "}
           </textarea>
         </div>
