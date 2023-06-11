@@ -1,68 +1,81 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { getQuiz } from '../../services/api';
-
+import {
+  getQuiz,
+  getTraining,
+  updateApplied,
+  updateDisapprove,
+  updateStudents,
+} from "../../services/api";
 
 const QuizPage = () => {
-    const { state } = useLocation();
-    const { id } = state;
-    const [quizData, setQuizData] = useState({
-        questions: [
-          {
-            question: 'Qual é a capital do Brasil?',
-            options: ['Rio de Janeiro', 'São Paulo', 'Brasília', 'Salvador'],
-            answer: '',
-          },
-          {
-            question: 'Qual é o maior planeta do Sistema Solar?',
-            options: ['Júpiter', 'Saturno', 'Urano', 'Netuno'],
-            answer: '',
-          },
-          // Adicione mais perguntas aqui
-        ],
-        answers: [],
-      });
+  const [quizData, setQuizData] = useState([]);
+  const [userAnswers, setUserAnswers] = useState([]);
+  const [error, setError] = useState(false);
+  const { state } = useLocation();
+  const { id } = state;
+  const [userId, setUserId] = useState();
+  const navigate = useNavigate();
 
   const loadData = async (query = "") => {
     try {
-      const response = await getQuiz(id)
-      console.log(id);
-      console.log(response.data);
-      //setQuizData(response.data.questions)
-    } catch (err) {
-      console.error(err);
+      const response = await getQuiz(id);
+      setUserId(localStorage.getItem("id"));
+      setQuizData(response.data.questions);
+      console.log(response.data.questions);
+      setUserAnswers(new Array(response.data.questions.length).fill(""));
+    } catch (error) {
+      console.log("Erro ao obter os dados do quiz:", error);
     }
   };
-
   useEffect(() => {
     (async () => await loadData())();
   }, []);
 
-
   const handleAnswerChange = (e, questionIndex) => {
     const { value } = e.target;
-    setQuizData((prevState) => {
-      const updatedQuizData = { ...prevState };
-      updatedQuizData.questions[questionIndex].answer = value;
-      return updatedQuizData;
+    setUserAnswers((prevState) => {
+      const updatedAnswers = [...prevState];
+      updatedAnswers[questionIndex] = value;
+      return updatedAnswers;
     });
   };
 
-  const handleSubmit = () => {
-    const answers = quizData.questions.map((question) => question.answer);
-    setQuizData((prevState) => ({
-      ...prevState,
-      answers,
-    }));
+  const handleSubmit = async () => {
+    try {
+      const expectedAnswers = quizData.map((question) => question.answer);
+      const response = await getTraining(id);
+      console.log(response.data.name);
 
-    // Lógica adicional para tratar as respostas submetidas
-    console.log(answers);
+      const correctAnswers = userAnswers.filter(
+        (answer, index) => answer === expectedAnswers[index]
+      );
+
+      const successPercentage =
+        (correctAnswers.length / expectedAnswers.length) * 100;
+
+      const userPassed = successPercentage >= 70;
+
+      if (userPassed) {
+        await updateApplied(userId, id, response.data.name);
+        await updateStudents(userId, id);
+      } else
+        await updateDisapprove(
+          userId,
+          id,
+          response.data.name,
+          "Reprovado no quiz"
+        );
+      navigate("/users");
+    } catch (error) {
+      setError(true);
+    }
   };
 
   return (
     <div className="quiz-container">
-      {quizData.questions.map((question, questionIndex) => (
-        <div className="question" key={questionIndex}>
+      {quizData.map((question, questionIndex) => (
+        <div className="question" key={question._id}>
           <p>{question.question}</p>
           {question.options.map((option, optionIndex) => (
             <div className="answer-container" key={optionIndex}>
@@ -71,7 +84,7 @@ const QuizPage = () => {
                 className="radio-input"
                 name={`answer-${questionIndex}`}
                 value={option}
-                checked={question.answer === option}
+                checked={userAnswers[questionIndex] === option}
                 onChange={(e) => handleAnswerChange(e, questionIndex)}
               />
               <span>{option}</span>

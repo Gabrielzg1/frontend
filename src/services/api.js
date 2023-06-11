@@ -34,7 +34,7 @@ export const createTraining = async (
   description,
   workload,
   minimumAmount,
-  maximumAmount,
+  maximumAmount
 ) => {
   return api.post(`/training`, {
     name,
@@ -50,11 +50,22 @@ export const createTraining = async (
 };
 
 export const createaQuiz = async (questions, trainingId) => {
-  return api.post("/quiz", {questions, trainingId})
+  return api.post("/quiz", { questions, trainingId });
+};
+export const getQuiz = async (id) => {
+  return api.get(`/quiz/${id}`);
+};
 
-}
-export const getQuiz = async ( id ) => {
-  return api.post(`/quiz/${id}`)
-
-}
-
+export const updateApplied = async (userId, appliedId, name) => {
+  return api.put(`/users/activity/applied/${userId}`, { appliedId, name });
+};
+export const updateDisapprove = async (userId, appliedId, name, reason) => {
+  return api.put(`/users/activity/disapprove/${userId}`, {
+    appliedId,
+    name,
+    reason,
+  });
+};
+export const updateStudents = async (userId, trainingId) => {
+  return api.put(`/training/${trainingId}`, { userId });
+};
