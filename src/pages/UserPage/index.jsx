@@ -60,11 +60,11 @@ const UserPage = () => {
           <h2>Treinamentos que se candidatou</h2>
           <div id="endtask">
             {applied.map((item) => (
-              <li id="boxtask" key={item.id}>
+              <li id="boxtask" key={item._id}>
                 <button
                   id="botao"
                   onClick={() => {
-                    navigate("/training");
+                    navigate("/training", { state: { id: item.trainingId } });
                   }}
                 >
                   {item.name}
