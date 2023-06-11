@@ -26,14 +26,13 @@ const TrainingPage = () => {
   const [students, setStudents] = useState([]);
   const [userId, setUserId] = useState();
   const [quiz, setQuiz] = useState(true);
+  const [nextCase, setNextCase] = useState(false);
 
   const loadData = async (query = "") => {
     try {
-      console.log(id);
       const response = await getTraining(id);
-      setUserId(localStorage.getItem("id"));
-      console.log(userId);
-      setStudents(response.data.students);
+      console.log("UserId: " + localStorage.getItem("id"));
+      console.log("Ids Registrados: " + response.data.students);
 
       setname(response.data.name);
       setWorkload(response.data.workload);
@@ -52,13 +51,10 @@ const TrainingPage = () => {
       setMaximumAmount(response.data.maximumAmount);
       setMinimumAmount(response.data.minimumAmount);
       setDescription(response.data.description);
-
-      console.log(students.indexOf(userId));
-      if (
-        students.indexOf(userId) !== -1 ||
-        localStorage.getItem("type") !== "users"
-      )
+      if (response.data.students.indexOf(localStorage.getItem("id")) !== -1) {
         setQuiz(false);
+        setNextCase(true);
+      }
     } catch (err) {}
   };
   useEffect(() => {
@@ -90,6 +86,13 @@ const TrainingPage = () => {
       </div>
 
       {quiz && <input type="button" value="Fazer Quiz" onClick={doQuiz} />}
+      {nextCase && (
+        <input
+          type="button"
+          value="Ir para o próximo Case"
+          onClick={() => console.log("case")}
+        />
+      )}
     </div>
   );
 };

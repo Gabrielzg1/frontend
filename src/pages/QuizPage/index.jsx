@@ -66,7 +66,7 @@ const QuizPage = () => {
           response.data.name,
           "Reprovado no quiz"
         );
-      //navigate("/users");
+      navigate("/users");
     } catch (error) {
       setError(true);
     }

@@ -85,7 +85,7 @@ const UserPage = () => {
                 <button
                   id="botao"
                   onClick={() => {
-                    navigate("/training");
+                    navigate("/training", { state: { id: item.trainingId } });
                   }}
                 >
                   {item.name}
@@ -110,14 +110,7 @@ const UserPage = () => {
                 }}
                 onMouseLeave={handleMouseLeave}
               >
-                <button
-                  id="botao"
-                  onClick={() => {
-                    navigate("/training");
-                  }}
-                >
-                  {item.name}
-                </button>
+                <h2 id="botao">{item.name}</h2>
               </li>
             ))}
           </div>
@@ -126,27 +119,6 @@ const UserPage = () => {
               <p>Motivo: {reason}</p>
             </div>
           )}
-        </ul>
-      </div>
-
-      <div id="boxtask1">
-        <ul>
-          {" "}
-          <h2>Jobs Disponiveis</h2>
-          <div id="endtask">
-            {jobs.map((item) => (
-              <li id="boxtask" key={item.id}>
-                <button
-                  id="botao"
-                  onClick={() => {
-                    navigate("/showjob");
-                  }}
-                >
-                  {item.name}
-                </button>
-              </li>
-            ))}
-          </div>
         </ul>
       </div>
     </div>
