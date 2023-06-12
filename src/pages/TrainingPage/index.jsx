@@ -127,20 +127,25 @@ const TrainingPage = () => {
           />
         )}
         {!subscribed && user && (
-          <input
-            type="button"
-            value="desinscrever-se"
-            className="style-button"
-            onClick={async () => {
-              try {
-                isSubscribed(true);
-                await removeStudent(localStorage.getItem("id"), id);
-                await handleCancelApplied();
-              } catch (error) {
-                setError(true);
-              }
-            }}
-          />
+          <>
+            <h2 className="alert">
+              Aguarde o Administrador passar para a próxima etapa
+            </h2>
+            <input
+              type="button"
+              value="desinscrever-se"
+              className="style-button"
+              onClick={async () => {
+                try {
+                  isSubscribed(true);
+                  await removeStudent(localStorage.getItem("id"), id);
+                  await handleCancelApplied();
+                } catch (error) {
+                  setError(true);
+                }
+              }}
+            />
+          </>
         )}
 
         {localStorage.getItem("type") === "admins" && (
