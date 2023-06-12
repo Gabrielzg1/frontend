@@ -4,6 +4,7 @@ import {
   cancelApplied,
   getTraining,
   getUser,
+  nextStage,
   removeStudent,
 } from "../../services/api";
 import { useNavigate, useLocation } from "react-router-dom";
@@ -96,7 +97,7 @@ const TrainingPage = () => {
   return (
     <div>
       <Navbar />
-      <h1 className="training-title">Training Page</h1>
+      <h1 className="trainingtitle">Treinamento</h1>
 
       <div className="training-container">
         <h2>Nome do treinamento: {name}</h2>
@@ -114,6 +115,7 @@ const TrainingPage = () => {
           <input
             type="button"
             value="Inscrever-se"
+            className="style-button"
             onClick={async () => {
               try {
                 isSubscribed(false);
@@ -128,6 +130,7 @@ const TrainingPage = () => {
           <input
             type="button"
             value="desinscrever-se"
+            className="style-button"
             onClick={async () => {
               try {
                 isSubscribed(true);
@@ -143,8 +146,16 @@ const TrainingPage = () => {
         {localStorage.getItem("type") === "admins" && (
           <input
             type="button"
+            className="style-button"
             value="Ir para o próximo Case"
-            onClick={() => console.log("case")}
+            onClick={async () => {
+              const response = await nextStage(id);
+
+              if (stage == "Treinamento Finalizado") {
+                alert("Treinamento Finalizado");
+              }
+              setStage(response.data.stage);
+            }}
           />
         )}
       </div>

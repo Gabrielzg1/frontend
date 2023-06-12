@@ -1,19 +1,18 @@
-body{
+body {
     font-family: 'Times New Roman', Times, serif;
     font-weight: 400;
     padding: 0;
     margin: 0
+}
+
+.mentor-title {
+
+    margin: 30px 30px;
+    color: black;
 
 }
 
-.mentor-title{
-
-margin: 30px 30px;
-color: black;
-    
-}
-
-#boxtaskmentor{
+#boxtaskmentor {
 
     margin-top: 120px;
     margin-left: 50px;
@@ -21,16 +20,26 @@ color: black;
     font-size: 20px;
     height: auto;
     width: 85%;
-    background: rgba(0,0,0,.9);
+    background: rgba(0, 0, 0, .9);
     color: rgb(230, 226, 226);
-    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
     border-radius: 4px;
 
 
 }
 
+.empty-container {
+    display: grid;
+    place-items: center;
 
-#endtaskmentor{
+}
+
+.empty-title {
+    color: red;
+}
+
+
+#endtaskmentor {
 
 
     display: flex;
@@ -40,7 +49,7 @@ color: black;
     padding: 10px 5px 10px 5px;
     height: auto;
     width: 97%;
-   /* border: 1.5px solid black;*/
+    /* border: 1.5px solid black;*/
     z-index: -1;
     background-color: transparent;
 
@@ -50,14 +59,14 @@ color: black;
 
 
 
-#boxlistamentor{
+#boxlistamentor {
     list-style-type: none;
 
     margin-left: 40px;
-    color:white;
+    color: white;
 }
 
-#botaomentor{
+#botaomentor {
 
     font-family: 'Times New Roman', Times, serif;
 
@@ -65,15 +74,15 @@ color: black;
     width: auto;
     font-size: 20px;
     font-weight: 400;
-    color:white;
+    color: white;
     background-color: transparent;
-    border: 0;   
+    border: 0;
 }
 
-#botaomentor:hover{
+#botaomentor:hover {
 
     background-color: whitesmoke;
-    color:black;
+    color: black;
     cursor: pointer;
     border-radius: 4px;
 }

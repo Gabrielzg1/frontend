@@ -1,21 +1,94 @@
-.training-title {
-    margin: 30px 30px;
+/* styles.css */
+
+.trainingtitle {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 24px;
 }
 
 .training-container {
-    margin: 50px 50px;
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 600px;
+    background-color: #f8f8f8;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
-.denied-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    flex-direction: column;
-    color: red
+.training-container h2 {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.training-container h3 {
+    margin-bottom: 5px;
+    font-size: 16px;
 }
 
 .button {
+    display: inline-block;
     padding: 10px 20px;
-    font-size: 18px;
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background-color: #007bff;
+    border: 1px solid #007bff;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.denied-container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.denied-container h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.denied-container button {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background-color: #dc3545;
+    border: 1px solid #dc3545;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.denied-container button:hover {
+    background-color: #b82332;
+    border-color: #b82332;
+}
+
+.style-button {
+    margin-top: 30px;
+    font-size: 17px;
+    padding: 0.5em 2em;
+    border: transparent;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    background: dodgerblue;
+    color: white;
+    border-radius: 4px;
+}
+
+.style-button:hover {
+    background: rgb(2, 0, 36);
+    background: linear-gradient(90deg, rgba(30, 144, 255, 1) 0%, rgba(0, 212, 255, 1) 100%);
+}
+
+.style-button:active {
+    transform: translate(0em, 0.2em);
 }

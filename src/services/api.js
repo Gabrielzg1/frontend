@@ -34,7 +34,8 @@ export const createTraining = async (
   description,
   workload,
   minimumAmount,
-  maximumAmount
+  maximumAmount,
+  mentorId
 ) => {
   return api.post(`/training`, {
     name,
@@ -46,6 +47,7 @@ export const createTraining = async (
     workload,
     minimumAmount,
     maximumAmount,
+    mentorId,
   });
 };
 
@@ -77,4 +79,20 @@ export const cancelApplied = async (userId, appliedId, name) => {
     appliedId,
     name,
   });
+};
+export const addMentor = async (mentorId, trainingId) => {
+  return api.put(`/training/addMentor/${trainingId}`, { mentorId });
+};
+export const getMentor = async (id) => {
+  return api.get(`/mentors/${id}`);
+};
+export const getMentors = async () => {
+  return api.get(`/mentors`);
+};
+export const nextStage = async (trainingId) => {
+  return api.put(`/training/${trainingId}`);
+};
+
+export const updateMentor = async (id, trainingId, name) => {
+  return api.put(`/mentors/addTraining/${id}`, { trainingId, name });
 };
