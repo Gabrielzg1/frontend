@@ -1,10 +1,15 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 import { useNavigate } from "react-router-dom";
 import Loader from "../../Containers/Loader";
 import "./styles.css";
 import Navbar from "../../Containers/Navbar";
-import { createTraining } from "../../services/api";
+import {
+  createTraining,
+  getMentor,
+  getMentors,
+  updateMentor,
+} from "../../services/api";
 
 const CreateTrainingPage = () => {
   const navigate = useNavigate();
@@ -21,9 +26,14 @@ const CreateTrainingPage = () => {
   const [finalTrainingDate, setFinalTrainingDate] = useState();
   const [maximumAmount, setMaximumAmount] = useState();
   const [minimumAmount, setMinimumAmount] = useState();
+  const [description, setDescription] = useState();
+  const [selectedMentor, setSelectedMentor] = useState("");
+  const [mentors, setMentors] = useState([]);
 
   const loadData = async (query = "") => {
     try {
+      const mentorsResponse = await getMentors();
+      setMentors(mentorsResponse.data);
     } catch (err) {
       console.error(err);
     }
@@ -64,40 +74,47 @@ const CreateTrainingPage = () => {
   const handlefinalTrainingDate = (event) => {
     setFinalTrainingDate(event.target.value);
   };
+  const handleDescription = (event) => {
+    setDescription(event.target.value);
+  };
+
+  const handleSelectMentor = (mentorId) => {
+    setSelectedMentor(mentorId);
+  };
+
+  const handleMentor = async (trainingId) => {
+    updateMentor(selectedMentor, trainingId, name);
+  };
 
   const createtraining = async () => {
-    // Aqui você pode enviar `data` para sua API
-    console.log(
-      name,
-      initialInscriptionDate,
-      finalInscriptionDate,
-      initialTrainingDate,
-      finalTrainingDate,
-      workload,
-      minimumAmount,
-      maximumAmount
-    ); // Exemplo de exibição do valor no console
-    const response = await createTraining(
-      name,
-      initialInscriptionDate,
-      finalInscriptionDate,
-      initialTrainingDate,
-      finalTrainingDate,
-      workload,
-      minimumAmount,
-      maximumAmount
-    );
-    navigate("/createquiz", { state: { id: response.data._id } });
+    try {
+      const response = await createTraining(
+        name,
+        initialInscriptionDate,
+        finalInscriptionDate,
+        initialTrainingDate,
+        finalTrainingDate,
+        description,
+        workload,
+        minimumAmount,
+        maximumAmount,
+        selectedMentor
+      );
+      handleMentor(response.data._id);
+      navigate("/createquiz", { state: { id: response.data._id } });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
     <div id="bodytrainingcreate">
       <Navbar />
-      <h1 className="create-training-title"> Create Training Page</h1>
+      <h1 className="create-training-title">Criar treinamento</h1>
 
       <div id="boxcriatreino">
-        <br />
-        <br />
+        {error === true && <p className="error">Valores Indevidos</p>}
+
         <div>
           <input
             value={name}
@@ -174,10 +191,32 @@ const CreateTrainingPage = () => {
         <label id="label">Descrição</label>
 
         <div>
-          <textarea name="" cols="30" rows="10" id="descricao-training">
+          <textarea
+            name=""
+            cols="30"
+            rows="10"
+            id="descricao-training"
+            onChange={handleDescription}
+          >
             {" "}
           </textarea>
         </div>
+        <h4>Selecione um Mentor</h4>
+        {mentors.map((mentor) => (
+          <div key={mentor._id}>
+            <label>
+              <input
+                type="radio"
+                value={mentor._id}
+                checked={selectedMentor === mentor._id}
+                onChange={() => handleSelectMentor(mentor._id)}
+              />
+              {mentor.username}
+            </label>
+          </div>
+        ))}
+        <br />
+        <br />
         <input
           type="button"
           value="Criar Treinamento"

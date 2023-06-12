@@ -15,6 +15,9 @@ const UserPage = () => {
   const [disapprove, setDisapprove] = useState([]);
   const [applied, setApplied] = useState([]);
 
+  //Jobs
+  const [jobs, setJobs] = useState([]);
+
   const handleMouseEnter = () => {
     setShowPopup(true);
   };
@@ -57,11 +60,11 @@ const UserPage = () => {
           <h2>Treinamentos que se candidatou</h2>
           <div id="endtask">
             {applied.map((item) => (
-              <li id="boxtask" key={item.id}>
+              <li id="boxtask" key={item.trainingId}>
                 <button
                   id="botao"
                   onClick={() => {
-                    navigate("/training");
+                    navigate("/training", { state: { id: item.trainingId } });
                   }}
                 >
                   {item.name}
@@ -78,11 +81,11 @@ const UserPage = () => {
           <h2>Treinamentos concluidos</h2>
           <div id="endtask">
             {finished.map((item) => (
-              <li id="boxtask" key={item.id}>
+              <li id="boxtask" key={item.trainingId}>
                 <button
                   id="botao"
                   onClick={() => {
-                    navigate("/training");
+                    navigate("/training", { state: { id: item.trainingId } });
                   }}
                 >
                   {item.name}
@@ -99,7 +102,7 @@ const UserPage = () => {
           <div id="disapprove">
             {disapprove.map((item) => (
               <li
-                key={item.id}
+                key={item.trainingId}
                 id="boxtask"
                 onMouseEnter={() => {
                   handleMouseEnter();
@@ -107,14 +110,7 @@ const UserPage = () => {
                 }}
                 onMouseLeave={handleMouseLeave}
               >
-                <button
-                  id="botao"
-                  onClick={() => {
-                    navigate("/training");
-                  }}
-                >
-                  {item.name}
-                </button>
+                <h2 id="botao">{item.name}</h2>
               </li>
             ))}
           </div>

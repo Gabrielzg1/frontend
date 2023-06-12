@@ -24,12 +24,13 @@ const HomePage = () => {
   const navigate = useNavigate();
   return (
     <div className="container">
+      <Navbar />
       <div className="title">Feed de Treinamento</div>
       {trainings.map((training) => (
         <div className="training-item" key={training._id}>
           <input
             type="button"
-            className="training-title"
+            className="home-training-title"
             value={training.name}
             onClick={() =>
               navigate("/training", { state: { id: training._id } })

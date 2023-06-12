@@ -1,0 +1,75 @@
+.main-showjob{
+
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 400;
+    margin: 0;
+    background-color: lightgray;
+    background-size: cover;
+    height:250vh;
+    padding: 10px 10px 20px 10px;
+    
+}
+
+.show-job-title{
+    margin: 50px 40px;
+    font-size: 30px;
+    font-weight: 400px;
+    text-align: left;
+    color: rgb(0, 0, 0);
+}
+
+#boxshowjob{
+    margin-top: 50px;
+    margin-left: 50px;
+    padding: 20px 20px;
+    font-size: 20px;
+    height: auto;
+    max-width: 85%;
+    background: rgba(0, 0, 0, .9);
+    color: rgb(230, 226, 226);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
+    border-radius: 4px;
+    word-break: break-all;
+}
+
+#input-showjobpage{
+    font-family: 'Times New Roman', Times, serif;
+    background-color: transparent;
+    margin-right: 140px;
+    margin-bottom: 25px;
+    border: 0;
+    outline: none;
+    padding: 2px 0;
+    color: white;
+}
+
+#label-showjob{
+
+    margin-top: 30px;
+}
+
+#sal-showjobpage{
+
+    background-color: transparent;
+    margin-right: 19%;
+    border: 0;
+    outline: none;
+    padding: 0.3px;
+    color: white;
+    font-size: 26px;
+}
+
+#descricao-showjob{
+
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 16px;
+    padding: 0px 10px;
+    width: 98%;
+    height: auto;
+    border: 1px solid #fff;
+    border-radius: 3px;
+    background-color: transparent;
+    color: white;
+    margin-top: 30px;
+
+}
