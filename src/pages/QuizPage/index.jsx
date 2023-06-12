@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import {
+  addStudents,
   getQuiz,
   getTraining,
   updateApplied,
@@ -55,17 +56,18 @@ const QuizPage = () => {
         (correctAnswers.length / expectedAnswers.length) * 100;
 
       const userPassed = successPercentage >= 70;
-
+      console.log(id);
       if (userPassed) {
         await updateApplied(userId, id, response.data.name);
-        await updateStudents(userId, id);
-      } else
+        await addStudents(userId, id);
+      } else {
         await updateDisapprove(
           userId,
           id,
           response.data.name,
           "Reprovado no quiz"
         );
+      }
       navigate("/users");
     } catch (error) {
       setError(true);

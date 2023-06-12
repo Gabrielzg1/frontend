@@ -1,7 +1,21 @@
-
 .training-title {
     margin: 30px 30px;
 }
+
 .training-container {
     margin: 50px 50px;
+}
+
+.denied-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    color: red
+}
+
+.button {
+    padding: 10px 20px;
+    font-size: 18px;
 }
