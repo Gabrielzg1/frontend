@@ -59,13 +59,22 @@ export const getQuiz = async (id) => {
 export const updateApplied = async (userId, appliedId, name) => {
   return api.put(`/users/activity/applied/${userId}`, { appliedId, name });
 };
-export const updateDisapprove = async (userId, appliedId, name, reason) => {
+export const updateDisapprove = async (userId, disapprovedId, name, reason) => {
   return api.put(`/users/activity/disapprove/${userId}`, {
-    appliedId,
+    disapprovedId,
     name,
     reason,
   });
 };
-export const updateStudents = async (userId, trainingId) => {
-  return api.put(`/training/${trainingId}`, { userId });
+export const addStudents = async (userId, trainingId) => {
+  return api.put(`/training/add/${trainingId}`, { userId });
+};
+export const removeStudent = async (userId, trainingId) => {
+  return api.put(`/training/remove/${trainingId}`, { userId });
+};
+export const cancelApplied = async (userId, appliedId, name) => {
+  return api.put(`/users/activity/applied/cancel/${userId}`, {
+    appliedId,
+    name,
+  });
 };
