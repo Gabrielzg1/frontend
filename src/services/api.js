@@ -96,3 +96,29 @@ export const nextStage = async (trainingId) => {
 export const updateMentor = async (id, trainingId, name) => {
   return api.put(`/mentors/addTraining/${id}`, { trainingId, name });
 };
+export const createJob = async (
+  title,
+  companyId,
+  description,
+  requirements,
+  minimumSalary,
+  maximumSalary
+) => {
+  return api.post(`/jobs`, {
+    title,
+    companyId,
+    description,
+    requirements,
+    minimumSalary,
+    maximumSalary,
+  });
+};
+export const getCompany = async (id) => {
+  return api.get(`/company/${id}`);
+};
+export const getJobs = async (id) => {
+  return api.get(`/jobs/company/${id}`);
+};
+export const getJob = async (id) => {
+  return api.get(`/jobs/${id}`);
+};

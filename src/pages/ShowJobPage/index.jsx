@@ -1,83 +1,101 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import Loader from "../../Containers/Loader";
 import "./style.css";
 import Navbar from "../../Containers/Navbar";
+import { max } from "moment";
+import { getJob, getJobs } from "../../services/api";
 
 const ShowJobPage = () => {
   const navigate = useNavigate();
   const [failError, setFailError] = useState(false);
   const [loading, isLoading] = useState(false);
   const [error, setError] = useState(false);
+  const { state } = useLocation();
+  const { id } = state;
 
-  const [name, setName] = useState(["Programador Full Stack"]);
-  const [empresa,setEmpresa] = useState(["Apple"]);
-  const [salminimo, setSalminimo] = useState(["12000"]);
-  const [salmaximo, setSalmaximo] = useState(["15000"]);
-  const [descricao, setDescricao] = useState(["Tags são estruturas de linguagem de marcação contendo instruções, tendo uma marca de início e outra de fim para que o navegador possa renderizar uma página. Há uma tendência nos dias atuais para se usar as tags apenas como delimitadores de estilo e/ou conteúdo, tanto em HTML quanto em XML."]);
-  const [requisitos, setRequisitos] = useState(["C e Python"]);
+  const [title, setTitle] = useState("");
+  const [mininum, setMinimum] = useState();
+  const [maximum, setMaximum] = useState();
+  const [description, setDescription] = useState("");
+  const [requirements, setRequirements] = useState("");
+  const [type, setType] = useState();
 
-
+  const loadData = async (query = "") => {
+    try {
+      const companyId = localStorage.getItem("id");
+      setType(localStorage.getItem("type"));
+      const response = await getJob(id);
+      console.log(response.data);
+      setTitle(response.data.title);
+      setDescription(response.data.description);
+      setRequirements(response.data.requirements);
+      setMinimum(response.data.minimumSalary);
+      setMaximum(response.data.maximumSalary);
+    } catch (err) {
+      console.error(err);
+      //localStorage.clear();
+      //navigate("/login");
+    }
+  };
+  useEffect(() => {
+    (async () => await loadData())();
+  }, []);
 
   if (loading) {
     return <Loader />;
   }
   return (
     <div className="main-showjob">
-			<Navbar />
-			<h1 className="show-job-title">Job Page</h1>
+      <Navbar />
+      <h1 className="show-job-title">Job Page</h1>
 
-			<div id="boxshowjob">
-				<div>
-					<h1 id="input-showjobpage">{name}</h1>
-				</div>
+      <div id="boxshowjob">
+        <div>
+          <h1 id="input-showjobpage">{title}</h1>
+        </div>
 
-				<br></br>
-				<br></br>
+        <br></br>
 
-				<div>
-					<label>Empresa</label>
-				</div>
+        <div id="label-showjob">
+          <label>Faixa Salarial</label>
+        </div>
 
-				<div>
-					<h2 id="input-showjobpage">{empresa}</h2>
-				</div>
+        <div id="divjobcreatesal">
+          <label id="sal-showjobpage">
+            R$ {mininum} - {maximum}
+          </label>
+        </div>
 
-				<div id="label-showjob">
-					<label >Faixa Salarial</label>
-				</div>
+        <br></br>
+        <br></br>
 
-				<div id="divjobcreatesal">
-					<label id="sal-showjobpage">R$ {salminimo} - {salmaximo}</label>				
-				</div>
+        <label id="label-showjob">
+          Descrição das Funções a serem desempenhadas
+        </label>
+        <div id="descricao-showjob">
+          <p>{description}</p>
+        </div>
 
-				<br></br>
-        		<br></br>
+        <br></br>
 
-				<label id="label-showjob">Descrição das Funções a serem desempenhadas</label>
-				<div id="descricao-showjob">
-					<p>{descricao}</p>
-				</div>
+        <label id="label-showjob">Requisitos para a Vaga</label>
+        <div id="descricao-showjob">
+          <p>{requirements}</p>
+        </div>
 
-				<br></br>
-
-				<label id="label-showjob">Requisitos para a Vaga</label>
-				<div id="descricao-showjob">
-					<p>{requisitos}</p>
-				</div>
-
-
-				<button 
-
-					id="botaocriarjob"
-					onClick={() => {
-						navigate("/company");}}
-				>
-					Aplicar
-				</button>
-				
-			</div>
-		</div>
+        {type === "users" && (
+          <button
+            id="botaocriarjob"
+            onClick={() => {
+              navigate("/company");
+            }}
+          >
+            Aplicar
+          </button>
+        )}
+      </div>
+    </div>
   );
 };
 
